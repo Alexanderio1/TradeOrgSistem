@@ -15,5 +15,16 @@ namespace TradeOrgSistem.Models
         public List<IRetailLocation> RetailLocations { get; set; }
         public List<ISale> Sales { get; set; }
         public List<ISeller> Sellers { get; set; }
+
+        public DataRoot()
+        {
+            Suppliers = new List<ISupplier>();
+            Customers = new List<ICustomer>();
+            Products = new List<IProduct>();
+            Deliveries = new List<IDelivery>();
+            RetailLocations = new List<IRetailLocation>();
+            Sales = new List<ISale>();
+            Sellers = new List<ISeller>();
+        }
     }
 }

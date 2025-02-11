@@ -33,6 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,11 +49,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="AboutForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="AboutForm.Designer.cs">
+      <DependentUpon>AboutForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DataManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DataManagementForm.Designer.cs">
+      <DependentUpon>DataManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\DataRoot.cs" />
@@ -72,6 +87,46 @@
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="QueryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="QueryForm.Designer.cs">
+      <DependentUpon>QueryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Repository\DataRepository.cs" />
+    <Compile Include="Services\ActiveCustomerQueryResult.cs" />
+    <Compile Include="Services\ActiveCustomerQueryService.cs" />
+    <Compile Include="Services\CustomerQueryResult.cs" />
+    <Compile Include="Services\CustomerQueryService.cs" />
+    <Compile Include="Services\DeliveryOrderQueryResult.cs" />
+    <Compile Include="Services\DeliveryOrderQueryService.cs" />
+    <Compile Include="Services\DeliveryQueryResult.cs" />
+    <Compile Include="Services\DeliveryQueryService.cs" />
+    <Compile Include="Services\IndividualSellerPerformanceQueryResult.cs" />
+    <Compile Include="Services\IndividualSellerPerformanceQueryService.cs" />
+    <Compile Include="Services\InventoryQueryResult.cs" />
+    <Compile Include="Services\ProductCustomerQueryResult.cs" />
+    <Compile Include="Services\ProductCustomerQueryService.cs" />
+    <Compile Include="Services\ProductPriceVolumeQueryResult.cs" />
+    <Compile Include="Services\ProductPriceVolumeQueryService.cs" />
+    <Compile Include="Services\ProductSalesVolumeQueryResult.cs" />
+    <Compile Include="Services\ProductSalesVolumeQueryService.cs" />
+    <Compile Include="Services\RetailLocationProfitabilityQueryResult.cs" />
+    <Compile Include="Services\RetailLocationProfitabilityQueryService.cs" />
+    <Compile Include="Services\RetailLocationQueryService.cs" />
+    <Compile Include="Services\AverageSellerPerformanceQueryResult.cs" />
+    <Compile Include="Services\AverageSellerPerformanceQueryService.cs" />
+    <Compile Include="Services\RetailTurnoverQueryResult.cs" />
+    <Compile Include="Services\RetailTurnoverQueryService.cs" />
+    <Compile Include="Services\SellerNormalizedPerformanceQueryResult.cs" />
+    <Compile Include="Services\SellerNormalizedPerformanceQueryService.cs" />
+    <Compile Include="Services\SellerSalaryQueryResult.cs" />
+    <Compile Include="Services\SellerSalaryQueryService.cs" />
+    <Compile Include="Services\SupplierQueryResult.cs" />
+    <Compile Include="Services\SupplierQueryService.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -81,6 +136,10 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="data.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

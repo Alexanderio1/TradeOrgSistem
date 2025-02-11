@@ -1,0 +1,154 @@
+﻿{
+  "Suppliers": [
+    {
+      "Id": 1,
+      "Name": "Поставщик А",
+      "Products": [ 1, 2 ]
+    },
+    {
+      "Id": 2,
+      "Name": "Поставщик Б",
+      "Products": [ 3 ]
+    }
+  ],
+  "Customers": [
+    {
+      "Id": 1,
+      "Name": "Покупатель А"
+    },
+    {
+      "Id": 2,
+      "Name": "Покупатель Б"
+    }
+  ],
+  "Products": [
+    {
+      "Id": 1,
+      "Name": "Товар А",
+      "Type": "Электроника"
+    },
+    {
+      "Id": 2,
+      "Name": "Товар Б",
+      "Type": "Продукты питания"
+    },
+    {
+      "Id": 3,
+      "Name": "Товар В",
+      "Type": "Одежда"
+    }
+  ],
+  "Deliveries": [
+    {
+      "Id": 1,
+      "SupplierId": 1,
+      "ProductId": 1,
+      "Date": "2023-01-01T00:00:00",
+      "Volume": 100,
+      "Price": 10.0,
+      "OrderNumber": "ORD-001"
+    },
+    {
+      "Id": 2,
+      "SupplierId": 1,
+      "ProductId": 2,
+      "Date": "2023-01-10T00:00:00",
+      "Volume": 50,
+      "Price": 20.0,
+      "OrderNumber": "ORD-002"
+    },
+    {
+      "Id": 3,
+      "SupplierId": 2,
+      "ProductId": 3,
+      "Date": "2023-01-15T00:00:00",
+      "Volume": 70,
+      "Price": 15.0,
+      "OrderNumber": "ORD-003"
+    }
+  ],
+  "RetailLocations": [
+    {
+      "Id": 1,
+      "Name": "Магазин 1",
+      "Type": "Магазин",
+      "Area": 150.0,
+      "NumberOfHalls": 1,
+      "NumberOfCounters": 5,
+      "Rent": 3000.0,
+      "Utilities": 1000.0,
+      "Inventory": [
+        {
+          "ProductId": 1,
+          "Volume": 40
+        },
+        {
+          "ProductId": 2,
+          "Volume": 20
+        }
+      ]
+    },
+    {
+      "Id": 2,
+      "Name": "Универмаг 1",
+      "Type": "Универмаг",
+      "Area": 500.0,
+      "NumberOfHalls": 3,
+      "NumberOfCounters": 15,
+      "Rent": 8000.0,
+      "Utilities": 2500.0,
+      "Inventory": [
+        {
+          "ProductId": 3,
+          "Volume": 30
+        }
+      ]
+    }
+  ],
+  "Sales": [
+    {
+      "Id": 1,
+      "CustomerId": 1,
+      "RetailLocationId": 1,
+      "SellerId": 1,
+      "ProductId": 1,
+      "Date": "2023-01-05T00:00:00",
+      "Volume": 5,
+      "Price": 12.0
+    },
+    {
+      "Id": 2,
+      "CustomerId": 2,
+      "RetailLocationId": 1,
+      "SellerId": 1,
+      "ProductId": 2,
+      "Date": "2023-01-06T00:00:00",
+      "Volume": 3,
+      "Price": 22.0
+    },
+    {
+      "Id": 3,
+      "CustomerId": 1,
+      "RetailLocationId": 2,
+      "SellerId": 2,
+      "ProductId": 3,
+      "Date": "2023-01-07T00:00:00",
+      "Volume": 2,
+      "Price": 18.0
+    }
+  ],
+  "Sellers": [
+    {
+      "Id": 1,
+      "Name": "Продавец 1",
+      "RetailLocationId": 1,
+      "Salary": 2000.0
+    },
+    {
+      "Id": 2,
+      "Name": "Продавец 2",
+      "RetailLocationId": 2,
+      "Salary": 3000.0
+    }
+  ]
+}

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace TradeOrgSistem.Models
 {
@@ -11,7 +7,13 @@ namespace TradeOrgSistem.Models
         int Id { get; set; }
         string Name { get; set; }
         string Type { get; set; }
-        // Список объектов номенклатуры в торговой точке
-        List<IInventoryItem> Inventory { get; set; }
+        IReadOnlyList<IInventoryItem> Inventory { get; }
+        void AddInventoryItem(IInventoryItem item);
+        void RemoveInventoryItem(int productId);
+        decimal Area { get; set; }
+        int NumberOfHalls { get; set; }
+        int NumberOfCounters { get; set; }  // число прилавков
+        decimal Rent { get; set; }          // ежемесячная арендная плата
+        decimal Utilities { get; set; }     // ежемесячные коммунальные платежи
     }
 }

@@ -14,5 +14,6 @@ namespace TradeOrgSistem.Models
         DateTime Date { get; set; }
         int Volume { get; set; }
         decimal Price { get; set; }
+        string OrderNumber { get; set; }
     }
 }

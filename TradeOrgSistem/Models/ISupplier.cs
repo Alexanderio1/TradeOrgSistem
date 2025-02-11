@@ -10,6 +10,8 @@ namespace TradeOrgSistem.Models
     {
         int Id { get; set; }
         string Name { get; set; }
-        List<int> Products { get; set; }
+        IReadOnlyList<int> ProductIds { get; }
+        void AttachProduct(IProduct product);
+        void DetachProduct(IProduct product);
     }
 }
