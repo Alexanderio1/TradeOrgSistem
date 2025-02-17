@@ -20,9 +20,9 @@ namespace TradeOrgSistem
         private void btnQueries_Click(object sender, EventArgs e)
         {
             // Создаем экземпляр формы запросов (например, QueryForm)
-            QueryForm queryForm = new QueryForm();
+            QueriesForm queriesForm = new QueriesForm();
             // Открываем форму немодально, чтобы можно было работать с несколькими окнами
-            queryForm.Show();
+            queriesForm.Show();
         }
 
         private void btnDataManagement_Click(object sender, EventArgs e)

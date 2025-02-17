@@ -10,11 +10,16 @@ using System.Windows.Forms;
 
 namespace TradeOrgSistem
 {
-    public partial class QueryForm : Form
+    public partial class ProgerForm : Form
     {
-        public QueryForm()
+        public ProgerForm()
         {
             InitializeComponent();
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

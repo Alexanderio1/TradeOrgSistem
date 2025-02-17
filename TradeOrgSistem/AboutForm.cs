@@ -14,5 +14,11 @@ namespace TradeOrgSistem
         {
             this.Close();
         }
+
+        private void btnproger_Click(object sender, EventArgs e)
+        {
+            ProgerForm progerForm = new ProgerForm();
+            progerForm.Show();
+        }
     }
 }

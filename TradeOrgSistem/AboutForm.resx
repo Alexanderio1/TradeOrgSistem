@@ -118,7 +118,7 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="txtDescription.Text" xml:space="preserve">
-    <value>TradeOrgSistem — информационная система для управления торговой организацией.
+    <value>TradeOrgSystem — информационная система для управления торговой организацией.
 
 Эта система предназначена для учета и анализа поставок, продаж, управления торговыми точками, а также формирования подробных аналитических отчетов. 
 

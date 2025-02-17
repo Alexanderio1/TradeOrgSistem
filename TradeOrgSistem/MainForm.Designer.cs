@@ -121,7 +121,7 @@
             this.Controls.Add(this.lblWelcome);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "TradeOrgSistem";
+            this.Text = "TradeOrgSystem";
             this.pnlButtons.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

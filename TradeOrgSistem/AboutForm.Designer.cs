@@ -30,6 +30,7 @@
             this.txtDescription = new System.Windows.Forms.TextBox();
             this.btnClose = new System.Windows.Forms.Button();
             this.pictureBoxLogo = new System.Windows.Forms.PictureBox();
+            this.btnproger = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxLogo)).BeginInit();
             this.SuspendLayout();
             // 
@@ -41,7 +42,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(789, 86);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "TradeOrgSistem";
+            this.lblTitle.Text = "TradeOrgSystem";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // lblVersion
@@ -92,11 +93,22 @@
             this.pictureBoxLogo.TabIndex = 2;
             this.pictureBoxLogo.TabStop = false;
             // 
+            // btnproger
+            // 
+            this.btnproger.Location = new System.Drawing.Point(676, 719);
+            this.btnproger.Name = "btnproger";
+            this.btnproger.Size = new System.Drawing.Size(162, 38);
+            this.btnproger.TabIndex = 5;
+            this.btnproger.Text = "Разработчики";
+            this.btnproger.UseVisualStyleBackColor = true;
+            this.btnproger.Click += new System.EventHandler(this.btnproger_Click);
+            // 
             // AboutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(852, 769);
+            this.Controls.Add(this.btnproger);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.txtDescription);
             this.Controls.Add(this.pictureBoxLogo);
@@ -122,5 +134,6 @@
         private System.Windows.Forms.TextBox txtDescription;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.PictureBox pictureBoxLogo;
+        private System.Windows.Forms.Button btnproger;
     }
 }
