@@ -137,6 +137,8 @@
             // 
             // txtProductType
             // 
+            this.txtProductType.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtProductType.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtProductType.Location = new System.Drawing.Point(23, 343);
             this.txtProductType.Name = "txtProductType";
             this.txtProductType.Size = new System.Drawing.Size(526, 31);
@@ -154,6 +156,8 @@
             // 
             // txtProductName
             // 
+            this.txtProductName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Append;
+            this.txtProductName.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
             this.txtProductName.Location = new System.Drawing.Point(23, 270);
             this.txtProductName.Name = "txtProductName";
             this.txtProductName.Size = new System.Drawing.Size(526, 31);
@@ -223,6 +227,7 @@
             this.Name = "Query2Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Запрос 2";
+            this.Load += new System.EventHandler(this.Query2Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

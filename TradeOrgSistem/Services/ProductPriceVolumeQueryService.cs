@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using TradeOrgSistem.Models;
 using TradeOrgSistem.Repository;
 
 namespace TradeOrgSistem.Services
@@ -23,30 +21,43 @@ namespace TradeOrgSistem.Services
 
         /// <summary>
         /// Получает сведения об объёме продаж и ценах для указанного товара.
-        /// Фильтрация может производиться:
-        /// – по всем торговым точкам (если ни retailLocationType, ни retailLocationId, ни retailLocationName не заданы),
-        /// – по торговым точкам заданного типа (если указан retailLocationType),
-        /// – по конкретной торговой точке (если задан retailLocationId или retailLocationName).
-        /// Приоритет: retailLocationId > retailLocationName > retailLocationType.
+        /// Фильтрация по торговым точкам:
+        /// – если задан retailLocationId, используется он;
+        /// – если ID не задан, но задано retailLocationName, производится поиск по названию (без учета регистра);
+        /// – если ни ID, ни название не заданы, но указан retailLocationType, фильтруем по типу торговой точки;
+        /// – если ни один параметр не указан, используются продажи по всем торговым точкам.
+        /// Поиск товара производится по следующим параметрам:
+        /// – если задан productId, используется он;
+        /// – если productId не задан, но задан productName, выполняется поиск по имени (без учета регистра).
+        /// Если ни один из параметров не указан, выбрасывается исключение.
         /// </summary>
-        /// <param name="productId">ID товара (обязательный параметр)</param>
-        /// <param name="retailLocationType">
-        /// Тип торговой точки для фильтрации (используется, если не задан retailLocationId и retailLocationName).
-        /// </param>
-        /// <param name="retailLocationId">
-        /// Конкретный ID торговой точки для фильтрации (приоритетный параметр).
-        /// </param>
-        /// <param name="retailLocationName">
-        /// Название торговой точки для фильтрации (используется, если retailLocationId не задан).
-        /// </param>
-        /// <returns>
-        /// Объект ProductPriceVolumeQueryResult с агрегированными данными:
-        /// общий объём продаж, минимальную, максимальную и среднюю цену.
-        /// </returns>
-        public ProductPriceVolumeQueryResult GetProductPriceVolumeInfo(int productId, string retailLocationType, int? retailLocationId, string retailLocationName)
+        /// <param name="productId">ID товара (опционально)</param>
+        /// <param name="productName">Название товара (опционально, используется если ID не задан)</param>
+        /// <param name="retailLocationType">Тип торговой точки для фильтрации (если не заданы другие параметры)</param>
+        /// <param name="retailLocationId">Конкретный ID торговой точки (приоритетный)</param>
+        /// <param name="retailLocationName">Название торговой точки (если ID не задан)</param>
+        /// <returns>Объект ProductPriceVolumeQueryResult с агрегированными данными</returns>
+        public ProductPriceVolumeQueryResult GetProductPriceVolumeInfo(int? productId, string productName, string retailLocationType, int? retailLocationId, string retailLocationName)
         {
+            // Определяем товар: если Product ID не задан, пытаемся найти по Product Name
+            if (!productId.HasValue)
+            {
+                if (!string.IsNullOrWhiteSpace(productName))
+                {
+                    var product = _repository.Data.Products
+                        .FirstOrDefault(p => p.Name.Equals(productName, StringComparison.OrdinalIgnoreCase));
+                    if (product == null)
+                        throw new InvalidOperationException("Товар с указанным именем не найден.");
+                    productId = product.Id;
+                }
+                else
+                {
+                    throw new InvalidOperationException("Необходимо указать либо Product ID, либо Product Name.");
+                }
+            }
+
             // Фильтруем продажи по заданному товару
-            var sales = _repository.Data.Sales.Where(s => s.ProductId == productId);
+            var sales = _repository.Data.Sales.Where(s => s.ProductId == productId.Value);
 
             // Фильтрация по торговым точкам
             if (retailLocationId.HasValue)
@@ -64,7 +75,7 @@ namespace TradeOrgSistem.Services
                     // Если торговая точка не найдена по названию, возвращаем результат с нулевыми значениями
                     return new ProductPriceVolumeQueryResult
                     {
-                        ProductId = productId,
+                        ProductId = productId.Value,
                         TotalVolume = 0,
                         MinPrice = 0,
                         MaxPrice = 0,
@@ -81,14 +92,14 @@ namespace TradeOrgSistem.Services
                     .Select(r => r.Id);
                 sales = sales.Where(s => locationIds.Contains(s.RetailLocationId));
             }
-            // Если ни один фильтр по торговой точке не задан, используем все продажи для данного товара
+            // Если ни один фильтр по торговой точке не задан, используются продажи по всем торговым точкам.
 
             // Если по заданным критериям продаж не найдено, возвращаем результат с нулевыми значениями
             if (!sales.Any())
             {
                 return new ProductPriceVolumeQueryResult
                 {
-                    ProductId = productId,
+                    ProductId = productId.Value,
                     TotalVolume = 0,
                     MinPrice = 0,
                     MaxPrice = 0,
@@ -103,7 +114,7 @@ namespace TradeOrgSistem.Services
 
             return new ProductPriceVolumeQueryResult
             {
-                ProductId = productId,
+                ProductId = productId.Value,
                 TotalVolume = totalVolume,
                 MinPrice = minPrice,
                 MaxPrice = maxPrice,

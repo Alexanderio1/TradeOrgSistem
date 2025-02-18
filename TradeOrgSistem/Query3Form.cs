@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TradeOrgSistem.Repository;
 using TradeOrgSistem.Services;
 
 namespace TradeOrgSistem
@@ -17,6 +18,21 @@ namespace TradeOrgSistem
         {
             InitializeComponent();
         }
+
+
+        private void SetupAutoCompleteForRetailLocationName()
+        {
+            // Получаем список названий торговых точек из репозитория
+            var names = DataRepository.Instance.Data.RetailLocations.Select(r => r.Name).ToArray();
+
+            AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
+            autoCompleteCollection.AddRange(names);
+
+            txtRetailLocationName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtRetailLocationName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtRetailLocationName.AutoCompleteCustomSource = autoCompleteCollection;
+        }
+
 
         private void btnRunQuery_Click(object sender, EventArgs e)
         {
@@ -50,6 +66,11 @@ namespace TradeOrgSistem
             {
                 MessageBox.Show("Ошибка при выполнении запроса:\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Query3Form_Load(object sender, EventArgs e)
+        {
+            SetupAutoCompleteForRetailLocationName();
         }
     }
 }

@@ -253,6 +253,18 @@
     <EmbeddedResource Include="Query3Form.resx">
       <DependentUpon>Query3Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Query4Form.resx">
+      <DependentUpon>Query4Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query5Form.resx">
+      <DependentUpon>Query5Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query6Form.resx">
+      <DependentUpon>Query6Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query7Form.resx">
+      <DependentUpon>Query7Form.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
     <Content Include="data.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

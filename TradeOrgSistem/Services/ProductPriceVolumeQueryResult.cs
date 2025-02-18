@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace TradeOrgSistem.Services
+﻿namespace TradeOrgSistem.Services
 {
     /// <summary>
-    /// Результат запроса сведений об объёме и ценах на указанный товар.
+    /// Результат запроса сведений об объёме продаж и ценах на указанный товар.
     /// </summary>
     public class ProductPriceVolumeQueryResult
     {

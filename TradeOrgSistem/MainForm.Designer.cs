@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblWelcome = new System.Windows.Forms.Label();
-            this.lblDescription = new System.Windows.Forms.Label();
             this.pnlButtons = new System.Windows.Forms.Panel();
             this.btnAbout = new System.Windows.Forms.Button();
             this.btnDataManagement = new System.Windows.Forms.Button();
@@ -49,26 +48,13 @@
             this.lblWelcome.Text = "Добро пожаловать\r\nв информационную систему торговой организации!";
             this.lblWelcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblDescription
-            // 
-            this.lblDescription.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.lblDescription.AutoSize = true;
-            this.lblDescription.Font = new System.Drawing.Font("Cascadia Code", 10.125F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblDescription.Location = new System.Drawing.Point(35, 115);
-            this.lblDescription.Name = "lblDescription";
-            this.lblDescription.Size = new System.Drawing.Size(879, 70);
-            this.lblDescription.TabIndex = 1;
-            this.lblDescription.Text = "Эта система позволяет выполнять различные запросы,\r\n управлять данными, формирова" +
-    "ть отчёты и многое другое";
-            this.lblDescription.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // pnlButtons
             // 
             this.pnlButtons.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pnlButtons.Controls.Add(this.btnAbout);
             this.pnlButtons.Controls.Add(this.btnDataManagement);
             this.pnlButtons.Controls.Add(this.btnQueries);
-            this.pnlButtons.Location = new System.Drawing.Point(214, 216);
+            this.pnlButtons.Location = new System.Drawing.Point(231, 166);
             this.pnlButtons.Name = "pnlButtons";
             this.pnlButtons.Size = new System.Drawing.Size(521, 401);
             this.pnlButtons.TabIndex = 2;
@@ -117,7 +103,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(974, 629);
             this.Controls.Add(this.pnlButtons);
-            this.Controls.Add(this.lblDescription);
             this.Controls.Add(this.lblWelcome);
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -131,7 +116,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblWelcome;
-        private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.Panel pnlButtons;
         private System.Windows.Forms.Button btnAbout;
         private System.Windows.Forms.Button btnDataManagement;

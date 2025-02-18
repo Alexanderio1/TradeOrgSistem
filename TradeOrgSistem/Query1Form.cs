@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TradeOrgSistem.Repository;
 using TradeOrgSistem.Services;
 
 namespace TradeOrgSistem
@@ -76,6 +77,53 @@ namespace TradeOrgSistem
             {
                 MessageBox.Show("Ошибка при выполнении запроса:\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        private void Query1Form_Load(object sender, EventArgs e)
+        {
+            SetupAutoCompleteForProductName();
+            SetupAutoCompleteForProductType();
+        }
+
+        /// <summary>
+        /// Настраивает автодополнение для поля txtProductName, используя список названий товаров.
+        /// </summary>
+        private void SetupAutoCompleteForProductName()
+        {
+            // Извлекаем все уникальные названия товаров из репозитория
+            var productNames = DataRepository.Instance.Data.Products
+                                .Select(p => p.Name)
+                                .Distinct()
+                                .ToArray();
+
+            AutoCompleteStringCollection autoCompleteNames = new AutoCompleteStringCollection();
+            autoCompleteNames.AddRange(productNames);
+
+            // Обеспечиваем, что TextBox однострочный
+            txtProductName.Multiline = false;
+            txtProductName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtProductName.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtProductName.AutoCompleteCustomSource = autoCompleteNames;
+        }
+
+        /// <summary>
+        /// Настраивает автодополнение для поля txtProductType, используя список типов товаров.
+        /// </summary>
+        private void SetupAutoCompleteForProductType()
+        {
+            // Извлекаем все уникальные типы товаров из репозитория
+            var productTypes = DataRepository.Instance.Data.Products
+                                .Select(p => p.Type)
+                                .Distinct()
+                                .ToArray();
+
+            AutoCompleteStringCollection autoCompleteTypes = new AutoCompleteStringCollection();
+            autoCompleteTypes.AddRange(productTypes);
+
+            txtProductType.Multiline = false;
+            txtProductType.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+            txtProductType.AutoCompleteSource = AutoCompleteSource.CustomSource;
+            txtProductType.AutoCompleteCustomSource = autoCompleteTypes;
         }
     }
 }
