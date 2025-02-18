@@ -10,7 +10,7 @@ namespace TradeOrgSistem.Services
     //результат запроса на перечень поставщиков и их общее число
     public class SupplierQueryResult
     {
-        public List<ISupplier> Suppliers { get; set; }
+        public List<Supplier> Suppliers { get; set; }
         public int TotalCount { get; set; }
     }
 }

@@ -11,7 +11,7 @@ namespace TradeOrgSistem.Models
         private int _id;
         private string _name;
         private string _type;
-        private readonly List<IInventoryItem> _inventory;
+        private readonly List<InventoryItem> _inventory;
         private decimal _area;
         private int _numberOfHalls;
         private int _numberOfCounters;
@@ -20,7 +20,7 @@ namespace TradeOrgSistem.Models
 
         public RetailLocation()
         {
-            _inventory = new List<IInventoryItem>();
+            _inventory = new List<InventoryItem>();
         }
 
         public int Id
@@ -56,9 +56,9 @@ namespace TradeOrgSistem.Models
             }
         }
 
-        public IReadOnlyList<IInventoryItem> Inventory => _inventory.AsReadOnly();
+        public IReadOnlyList<InventoryItem> Inventory => _inventory.AsReadOnly();
 
-        public void AddInventoryItem(IInventoryItem item)
+        public void AddInventoryItem(InventoryItem item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item), "Элемент номенклатуры не может быть null.");

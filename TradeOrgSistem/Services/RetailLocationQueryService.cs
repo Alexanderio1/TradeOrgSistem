@@ -38,7 +38,7 @@ namespace TradeOrgSistem.Services
         /// </returns>
         public InventoryQueryResult GetInventoryForRetailLocation(int? retailLocationId, string retailLocationName)
         {
-            IRetailLocation location = null;
+            RetailLocation location = null;
 
             if (retailLocationId.HasValue)
             {

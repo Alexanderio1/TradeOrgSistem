@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using TradeOrgSistem.Services;
 
 namespace TradeOrgSistem
 {
@@ -15,6 +16,74 @@ namespace TradeOrgSistem
         public Query2Form()
         {
             InitializeComponent();
+        }
+
+        private void btnRunQuery_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // 1. Считываем параметры
+
+                // productId
+                int? productId = null;
+                if (!string.IsNullOrWhiteSpace(txtProductId.Text))
+                {
+                    if (int.TryParse(txtProductId.Text, out int pid))
+                        productId = pid;
+                    else
+                    {
+                        MessageBox.Show("Неверный формат Product ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // productName
+                string productName = txtProductName.Text.Trim();
+
+                // productType
+                string productType = txtProductType.Text.Trim();
+
+                // minVolume
+                int? minVolume = null;
+                if (!string.IsNullOrWhiteSpace(txtMinVolume.Text))
+                {
+                    if (int.TryParse(txtMinVolume.Text, out int vol))
+                        minVolume = vol;
+                    else
+                    {
+                        MessageBox.Show("Неверный формат Min Volume.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
+                    }
+                }
+
+                // startDate и endDate
+                DateTime? startDate = dtpStartDate.Value;
+                DateTime? endDate = dtpEndDate.Value;
+
+                // 2. Вызываем сервис
+                CustomerQueryService service = new CustomerQueryService();
+                var result = service.GetCustomersByProductCriteria(
+                    productType,
+                    productId,
+                    productName,
+                    minVolume,
+                    startDate,
+                    endDate
+                );
+
+                // 3. Отображаем результаты
+                dgvResults.DataSource = result.Customers;
+
+                // Скрыть или оставить дополнительные колонки, если они есть
+                // Пример: if (dgvResults.Columns["SomeProperty"] != null) dgvResults.Columns["SomeProperty"].Visible = false;
+
+                // 4. Выводим общее число покупателей
+                lblTotalCount.Text = $"Общее число покупателей: {result.TotalCount}";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Ошибка при выполнении запроса:\n" + ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }

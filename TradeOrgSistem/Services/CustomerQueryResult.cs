@@ -12,7 +12,7 @@ namespace TradeOrgSistem.Services
     /// </summary>
     public class CustomerQueryResult
     {
-        public List<ICustomer> Customers { get; set; }
+        public List<Customer> Customers { get; set; }
         public int TotalCount { get; set; }
     }
 }

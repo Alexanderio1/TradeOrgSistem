@@ -114,6 +114,7 @@
             this.btnQuery2.TabIndex = 1;
             this.btnQuery2.Text = "2. Покупатели (по виду, объём, период)";
             this.btnQuery2.UseVisualStyleBackColor = true;
+            this.btnQuery2.Click += new System.EventHandler(this.btnQuery2_Click);
             // 
             // btnQuery3
             // 
@@ -125,6 +126,7 @@
             this.btnQuery3.TabIndex = 2;
             this.btnQuery3.Text = "3. Номенклатура торговой точки";
             this.btnQuery3.UseVisualStyleBackColor = true;
+            this.btnQuery3.Click += new System.EventHandler(this.btnQuery3_Click);
             // 
             // btnQuery4
             // 
@@ -136,6 +138,7 @@
             this.btnQuery4.TabIndex = 3;
             this.btnQuery4.Text = "4. Объём и цены товара (все/тип/точка)";
             this.btnQuery4.UseVisualStyleBackColor = true;
+            this.btnQuery4.Click += new System.EventHandler(this.btnQuery4_Click);
             // 
             // btnQuery5
             // 
@@ -147,6 +150,7 @@
             this.btnQuery5.TabIndex = 4;
             this.btnQuery5.Text = "5. Выработка продавца (средняя по точкам)";
             this.btnQuery5.UseVisualStyleBackColor = true;
+            this.btnQuery5.Click += new System.EventHandler(this.btnQuery5_Click);
             // 
             // btnQuery6
             // 
@@ -158,6 +162,7 @@
             this.btnQuery6.TabIndex = 5;
             this.btnQuery6.Text = "6. Выработка продавца (конкретная точка)";
             this.btnQuery6.UseVisualStyleBackColor = true;
+            this.btnQuery6.Click += new System.EventHandler(this.btnQuery6_Click);
             // 
             // btnQuery7
             // 
@@ -169,6 +174,7 @@
             this.btnQuery7.TabIndex = 6;
             this.btnQuery7.Text = "7. Объём продаж товара (все/тип/точка)";
             this.btnQuery7.UseVisualStyleBackColor = true;
+            this.btnQuery7.Click += new System.EventHandler(this.btnQuery7_Click);
             // 
             // btnQuery8
             // 
@@ -180,6 +186,7 @@
             this.btnQuery8.TabIndex = 7;
             this.btnQuery8.Text = "8. Заработная плата продавцов";
             this.btnQuery8.UseVisualStyleBackColor = true;
+            this.btnQuery8.Click += new System.EventHandler(this.btnQuery8_Click);
             // 
             // btnQuery9
             // 
@@ -191,6 +198,7 @@
             this.btnQuery9.TabIndex = 8;
             this.btnQuery9.Text = "9. Поставки товара (поставщик, период)";
             this.btnQuery9.UseVisualStyleBackColor = true;
+            this.btnQuery9.Click += new System.EventHandler(this.btnQuery9_Click);
             // 
             // btnQuery10
             // 
@@ -202,6 +210,7 @@
             this.btnQuery10.TabIndex = 9;
             this.btnQuery10.Text = "10. Отношение объёма продаж к нормировке";
             this.btnQuery10.UseVisualStyleBackColor = true;
+            this.btnQuery10.Click += new System.EventHandler(this.btnQuery10_Click);
             // 
             // btnQuery11
             // 
@@ -213,6 +222,7 @@
             this.btnQuery11.TabIndex = 10;
             this.btnQuery11.Text = "11. Рентабельность торговой точки";
             this.btnQuery11.UseVisualStyleBackColor = true;
+            this.btnQuery11.Click += new System.EventHandler(this.btnQuery11_Click);
             // 
             // btnQuery12
             // 
@@ -224,6 +234,7 @@
             this.btnQuery12.TabIndex = 11;
             this.btnQuery12.Text = "12. Поставки по номеру заказа";
             this.btnQuery12.UseVisualStyleBackColor = true;
+            this.btnQuery12.Click += new System.EventHandler(this.btnQuery12_Click);
             // 
             // btnQuery13
             // 
@@ -235,6 +246,7 @@
             this.btnQuery13.TabIndex = 12;
             this.btnQuery13.Text = "13. Покупатели товара (период, точка)";
             this.btnQuery13.UseVisualStyleBackColor = true;
+            this.btnQuery13.Click += new System.EventHandler(this.btnQuery13_Click);
             // 
             // btnQuery14
             // 
@@ -246,6 +258,7 @@
             this.btnQuery14.TabIndex = 13;
             this.btnQuery14.Text = "14. Наиболее активные покупатели";
             this.btnQuery14.UseVisualStyleBackColor = true;
+            this.btnQuery14.Click += new System.EventHandler(this.btnQuery14_Click);
             // 
             // btnQuery15
             // 
@@ -257,6 +270,7 @@
             this.btnQuery15.TabIndex = 14;
             this.btnQuery15.Text = "15. Товарооборот торговой точки/группы";
             this.btnQuery15.UseVisualStyleBackColor = true;
+            this.btnQuery15.Click += new System.EventHandler(this.btnQuery15_Click);
             // 
             // QueriesForm
             // 

@@ -8,23 +8,23 @@ namespace TradeOrgSistem.Models
 {
     public class DataRoot : IDataRoot
     {
-        public List<ISupplier> Suppliers { get; set; }
-        public List<ICustomer> Customers { get; set; }
-        public List<IProduct> Products { get; set; }
-        public List<IDelivery> Deliveries { get; set; }
-        public List<IRetailLocation> RetailLocations { get; set; }
-        public List<ISale> Sales { get; set; }
-        public List<ISeller> Sellers { get; set; }
+        public List<Supplier> Suppliers { get; set; }
+        public List<Customer> Customers { get; set; }
+        public List<Product> Products { get; set; }
+        public List<Delivery> Deliveries { get; set; }
+        public List<RetailLocation> RetailLocations { get; set; }
+        public List<Sale> Sales { get; set; }
+        public List<Seller> Sellers { get; set; }
 
         public DataRoot()
         {
-            Suppliers = new List<ISupplier>();
-            Customers = new List<ICustomer>();
-            Products = new List<IProduct>();
-            Deliveries = new List<IDelivery>();
-            RetailLocations = new List<IRetailLocation>();
-            Sales = new List<ISale>();
-            Sellers = new List<ISeller>();
+            Suppliers = new List<Supplier>();
+            Customers = new List<Customer>();
+            Products = new List<Product>();
+            Deliveries = new List<Delivery>();
+            RetailLocations = new List<RetailLocation>();
+            Sales = new List<Sale>();
+            Sellers = new List<Seller>();
         }
     }
 }

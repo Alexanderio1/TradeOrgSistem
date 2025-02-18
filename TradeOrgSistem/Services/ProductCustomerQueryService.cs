@@ -110,7 +110,7 @@ namespace TradeOrgSistem.Services
                 else
                 {
                     // Если торговая точка не найдена по названию, сбрасываем продажи
-                    sales = Enumerable.Empty<ISale>();
+                    sales = Enumerable.Empty<Sale>();
                 }
             }
             else if (!string.IsNullOrWhiteSpace(retailLocationType))

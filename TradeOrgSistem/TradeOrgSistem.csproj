@@ -102,6 +102,42 @@
     <Compile Include="QueriesForm.Designer.cs">
       <DependentUpon>QueriesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Query10Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query10Form.Designer.cs">
+      <DependentUpon>Query10Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query11Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query11Form.Designer.cs">
+      <DependentUpon>Query11Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query12Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query12Form.Designer.cs">
+      <DependentUpon>Query12Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query13Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query13Form.Designer.cs">
+      <DependentUpon>Query13Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query14Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query14Form.Designer.cs">
+      <DependentUpon>Query14Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query15Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query15Form.Designer.cs">
+      <DependentUpon>Query15Form.cs</DependentUpon>
+    </Compile>
     <Compile Include="Query1Form.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +149,48 @@
     </Compile>
     <Compile Include="Query2Form.Designer.cs">
       <DependentUpon>Query2Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query3Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query3Form.Designer.cs">
+      <DependentUpon>Query3Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query4Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query4Form.Designer.cs">
+      <DependentUpon>Query4Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query5Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query5Form.Designer.cs">
+      <DependentUpon>Query5Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query6Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query6Form.Designer.cs">
+      <DependentUpon>Query6Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query7Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query7Form.Designer.cs">
+      <DependentUpon>Query7Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query8Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query8Form.Designer.cs">
+      <DependentUpon>Query8Form.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Query9Form.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Query9Form.Designer.cs">
+      <DependentUpon>Query9Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\DataRepository.cs" />
     <Compile Include="Services\ActiveCustomerQueryResult.cs" />
@@ -166,10 +244,19 @@
     <EmbeddedResource Include="QueriesForm.resx">
       <DependentUpon>QueriesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Query1Form.resx">
+      <DependentUpon>Query1Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query2Form.resx">
+      <DependentUpon>Query2Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query3Form.resx">
+      <DependentUpon>Query3Form.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
-    <None Include="data.json">
+    <Content Include="data.json">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+    </Content>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

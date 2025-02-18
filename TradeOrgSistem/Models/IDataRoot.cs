@@ -8,12 +8,12 @@ namespace TradeOrgSistem.Models
 {
     public interface IDataRoot
     {
-        List<ISupplier> Suppliers { get; set; }
-        List<ICustomer> Customers { get; set; }
-        List<IProduct> Products { get; set; }
-        List<IDelivery> Deliveries { get; set; }
-        List<IRetailLocation> RetailLocations { get; set; }
-        List<ISale> Sales { get; set; }
-        List<ISeller> Sellers { get; set; }
+        List<Supplier> Suppliers { get; set; }
+        List<Customer> Customers { get; set; }
+        List<Product> Products { get; set; }
+        List<Delivery> Deliveries { get; set; }
+        List<RetailLocation> RetailLocations { get; set; }
+        List<Sale> Sales { get; set; }
+        List<Seller> Sellers { get; set; }
     }
 }

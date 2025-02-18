@@ -49,7 +49,7 @@ namespace TradeOrgSistem.Repository
 
                 catch(Exception ex)
                 {
-                    throw new ApplicationException("Ошибка при загрузке данных из файла JSON.", ex);
+                    throw new ApplicationException("Ошибка при загрузке данных из файла JSON:\n" + ex.ToString(), ex);
                 }
             }
             else

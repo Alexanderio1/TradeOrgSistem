@@ -74,7 +74,7 @@ namespace TradeOrgSistem.Services
                     sales = sales.Where(s => s.RetailLocationId == location.Id);
                 else
                     // Если торговая точка не найдена, можно считать, что выборка пуста
-                    sales = Enumerable.Empty<ISale>();
+                    sales = Enumerable.Empty<Sale>();
             }
             else if (!string.IsNullOrWhiteSpace(retailLocationType))
             {
