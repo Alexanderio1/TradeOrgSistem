@@ -11,16 +11,20 @@ namespace TradeOrgSistem.Models
         private int _id;
         private string _name;
         private string _type;
-        private readonly List<InventoryItem> _inventory;
         private decimal _area;
         private int _numberOfHalls;
         private int _numberOfCounters;
         private decimal _rent;
         private decimal _utilities;
 
+        // Теперь Inventory – публичное свойство с get; set; 
+        // и Newtonsoft.Json сможет заполнить его при десериализации.
+        public List<InventoryItem> Inventory { get; set; }
+
         public RetailLocation()
         {
-            _inventory = new List<InventoryItem>();
+            // Инициализируем Inventory пустым списком по умолчанию.
+            Inventory = new List<InventoryItem>();
         }
 
         public int Id
@@ -56,23 +60,26 @@ namespace TradeOrgSistem.Models
             }
         }
 
-        public IReadOnlyList<InventoryItem> Inventory => _inventory.AsReadOnly();
+        // Методы для управления списком Inventory
 
         public void AddInventoryItem(InventoryItem item)
         {
             if (item == null)
                 throw new ArgumentNullException(nameof(item), "Элемент номенклатуры не может быть null.");
-            if (_inventory.Any(i => i.ProductId == item.ProductId))
+
+            if (Inventory.Any(i => i.ProductId == item.ProductId))
                 throw new InvalidOperationException("Элемент номенклатуры с таким ProductId уже существует.");
-            _inventory.Add(item);
+
+            Inventory.Add(item);
         }
 
         public void RemoveInventoryItem(int productId)
         {
-            var item = _inventory.FirstOrDefault(i => i.ProductId == productId);
+            var item = Inventory.FirstOrDefault(i => i.ProductId == productId);
             if (item == null)
                 throw new InvalidOperationException("Элемент номенклатуры с данным ProductId не найден.");
-            _inventory.Remove(item);
+
+            Inventory.Remove(item);
         }
 
         public decimal Area

@@ -41,7 +41,6 @@ namespace TradeOrgSistem
                 // Создаем экземпляр сервиса для запроса инвентаря торговой точки
                 RetailLocationQueryService service = new RetailLocationQueryService();
                 var result = service.GetInventoryForRetailLocation(retailLocationId, retailLocationName);
-                MessageBox.Show($"Найдено записей: {result.InventoryItems.Count}");
 
 
                 // Привязываем список элементов инвентаря к DataGridView для отображения
