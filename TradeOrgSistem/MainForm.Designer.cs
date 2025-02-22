@@ -104,6 +104,7 @@
             this.ClientSize = new System.Drawing.Size(974, 629);
             this.Controls.Add(this.pnlButtons);
             this.Controls.Add(this.lblWelcome);
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "TradeOrgSystem";

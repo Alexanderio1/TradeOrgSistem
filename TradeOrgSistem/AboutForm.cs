@@ -20,5 +20,11 @@ namespace TradeOrgSistem
             ProgerForm progerForm = new ProgerForm();
             progerForm.Show();
         }
+
+        private void btnguid_Click(object sender, EventArgs e)
+        {
+            UserGuideForm userGuideForm = new UserGuideForm();
+            userGuideForm.Show();
+        }
     }
 }

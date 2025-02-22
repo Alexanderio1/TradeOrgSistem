@@ -58,11 +58,23 @@
     <Compile Include="AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="CustomersManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CustomersManagementForm.Designer.cs">
+      <DependentUpon>CustomersManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="DataManagementForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataManagementForm.Designer.cs">
       <DependentUpon>DataManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DeliveriesManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DeliveriesManagementForm.Designer.cs">
+      <DependentUpon>DeliveriesManagementForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -88,6 +100,12 @@
     <Compile Include="Models\Sale.cs" />
     <Compile Include="Models\Seller.cs" />
     <Compile Include="Models\Supplier.cs" />
+    <Compile Include="ProductsManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductsManagementForm.Designer.cs">
+      <DependentUpon>ProductsManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ProgerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -193,10 +211,30 @@
       <DependentUpon>Query9Form.cs</DependentUpon>
     </Compile>
     <Compile Include="Repository\DataRepository.cs" />
+    <Compile Include="RetailLocationsManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RetailLocationsManagementForm.Designer.cs">
+      <DependentUpon>RetailLocationsManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SalesManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SalesManagementForm.Designer.cs">
+      <DependentUpon>SalesManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SellersManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SellersManagementForm.Designer.cs">
+      <DependentUpon>SellersManagementForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Services\ActiveCustomerQueryResult.cs" />
     <Compile Include="Services\ActiveCustomerQueryService.cs" />
+    <Compile Include="Services\CustomerManagementService.cs" />
     <Compile Include="Services\CustomerQueryResult.cs" />
     <Compile Include="Services\CustomerQueryService.cs" />
+    <Compile Include="Services\DeliveryManagementService.cs" />
     <Compile Include="Services\DeliveryOrderQueryResult.cs" />
     <Compile Include="Services\DeliveryOrderQueryService.cs" />
     <Compile Include="Services\DeliveryQueryResult.cs" />
@@ -206,10 +244,12 @@
     <Compile Include="Services\InventoryQueryResult.cs" />
     <Compile Include="Services\ProductCustomerQueryResult.cs" />
     <Compile Include="Services\ProductCustomerQueryService.cs" />
+    <Compile Include="Services\ProductManagementService.cs" />
     <Compile Include="Services\ProductPriceVolumeQueryResult.cs" />
     <Compile Include="Services\ProductPriceVolumeQueryService.cs" />
     <Compile Include="Services\ProductSalesVolumeQueryResult.cs" />
     <Compile Include="Services\ProductSalesVolumeQueryService.cs" />
+    <Compile Include="Services\RetailLocationManagementService.cs" />
     <Compile Include="Services\RetailLocationProfitabilityQueryResult.cs" />
     <Compile Include="Services\RetailLocationProfitabilityQueryService.cs" />
     <Compile Include="Services\RetailLocationQueryService.cs" />
@@ -217,17 +257,44 @@
     <Compile Include="Services\AverageSellerPerformanceQueryService.cs" />
     <Compile Include="Services\RetailTurnoverQueryResult.cs" />
     <Compile Include="Services\RetailTurnoverQueryService.cs" />
+    <Compile Include="Services\SaleManagementService.cs" />
+    <Compile Include="Services\SellerManagementService.cs" />
     <Compile Include="Services\SellerNormalizedPerformanceQueryResult.cs" />
     <Compile Include="Services\SellerNormalizedPerformanceQueryService.cs" />
     <Compile Include="Services\SellerSalaryQueryResult.cs" />
     <Compile Include="Services\SellerSalaryQueryService.cs" />
+    <Compile Include="Services\SupplierManagementService.cs" />
     <Compile Include="Services\SupplierQueryResult.cs" />
     <Compile Include="Services\SupplierQueryService.cs" />
+    <Compile Include="SuppliersManagementForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuppliersManagementForm.Designer.cs">
+      <DependentUpon>SuppliersManagementForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserGuideForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserGuideForm.Designer.cs">
+      <DependentUpon>UserGuideForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="CustomersManagementForm.resx">
+      <DependentUpon>CustomersManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DataManagementForm.resx">
+      <DependentUpon>DataManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DeliveriesManagementForm.resx">
+      <DependentUpon>DeliveriesManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductsManagementForm.resx">
+      <DependentUpon>ProductsManagementForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ProgerForm.resx">
       <DependentUpon>ProgerForm.cs</DependentUpon>
@@ -243,6 +310,24 @@
     </Compile>
     <EmbeddedResource Include="QueriesForm.resx">
       <DependentUpon>QueriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query10Form.resx">
+      <DependentUpon>Query10Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query11Form.resx">
+      <DependentUpon>Query11Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query12Form.resx">
+      <DependentUpon>Query12Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query13Form.resx">
+      <DependentUpon>Query13Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query14Form.resx">
+      <DependentUpon>Query14Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query15Form.resx">
+      <DependentUpon>Query15Form.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Query1Form.resx">
       <DependentUpon>Query1Form.cs</DependentUpon>
@@ -265,10 +350,31 @@
     <EmbeddedResource Include="Query7Form.resx">
       <DependentUpon>Query7Form.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Query8Form.resx">
+      <DependentUpon>Query8Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Query9Form.resx">
+      <DependentUpon>Query9Form.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RetailLocationsManagementForm.resx">
+      <DependentUpon>RetailLocationsManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SalesManagementForm.resx">
+      <DependentUpon>SalesManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SellersManagementForm.resx">
+      <DependentUpon>SellersManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuppliersManagementForm.resx">
+      <DependentUpon>SuppliersManagementForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserGuideForm.resx">
+      <DependentUpon>UserGuideForm.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.manifest" />
-    <Content Include="data.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
+    <None Include="data.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

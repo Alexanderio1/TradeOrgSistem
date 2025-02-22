@@ -226,7 +226,7 @@
             this.MaximizeBox = false;
             this.Name = "Query4Form";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Query4Form";
+            this.Text = "Запрос 4";
             this.Load += new System.EventHandler(this.Query4Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

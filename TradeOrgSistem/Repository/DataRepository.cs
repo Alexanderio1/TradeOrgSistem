@@ -13,7 +13,7 @@ namespace TradeOrgSistem.Repository
     {
         private static DataRepository _instance;
         private static readonly object _lock = new object();
-        private const string FilePath = "data.json";
+        private const string FilePath = @"C:\Users\zirael\source\repos\TradeOrgSistem\TradeOrgSistem\data.json";
 
         public DataRoot Data { get; private set; }
 

@@ -219,8 +219,10 @@
             this.Controls.Add(this.txtProductId);
             this.Controls.Add(this.lblProductId);
             this.Controls.Add(this.lblTitle);
+            this.MaximizeBox = false;
             this.Name = "Query7Form";
-            this.Text = "Query7Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Запрос 7";
             this.Load += new System.EventHandler(this.Query7Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

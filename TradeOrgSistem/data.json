@@ -1,14 +1,19 @@
-﻿{
+{
   "Suppliers": [
     {
       "Id": 1,
       "Name": "Поставщик А",
-      "Products": [ 1, 2 ]
+      "ProductIds": []
     },
     {
       "Id": 2,
       "Name": "Поставщик Б",
-      "Products": [ 3 ]
+      "ProductIds": []
+    },
+    {
+      "Id": 3,
+      "Name": "Поставщик В",
+      "ProductIds": []
     }
   ],
   "Customers": [
@@ -19,6 +24,14 @@
     {
       "Id": 2,
       "Name": "Покупатель Б"
+    },
+    {
+      "Id": 3,
+      "Name": "Покупатель Б"
+    },
+    {
+      "Id": 4,
+      "Name": "Покупатель Г"
     }
   ],
   "Products": [
@@ -30,12 +43,12 @@
     {
       "Id": 2,
       "Name": "Товар Б",
-      "Type": "Продукты питания"
+      "Type": "Одежда"
     },
     {
       "Id": 3,
       "Name": "Товар В",
-      "Type": "Одежда"
+      "Type": "Продукты питания"
     }
   ],
   "Deliveries": [
@@ -43,40 +56,32 @@
       "Id": 1,
       "SupplierId": 1,
       "ProductId": 1,
-      "Date": "2023-01-01T00:00:00",
+      "Date": "2025-01-01T06:00:00",
       "Volume": 100,
-      "Price": 10.0,
+      "Price": 400.0,
       "OrderNumber": "ORD-001"
     },
     {
       "Id": 2,
       "SupplierId": 1,
       "ProductId": 2,
-      "Date": "2023-01-10T00:00:00",
+      "Date": "2025-01-10T06:00:00",
       "Volume": 50,
-      "Price": 20.0,
+      "Price": 2000.0,
       "OrderNumber": "ORD-002"
     },
     {
       "Id": 3,
       "SupplierId": 2,
       "ProductId": 3,
-      "Date": "2023-01-15T00:00:00",
+      "Date": "2025-01-15T06:00:00",
       "Volume": 70,
-      "Price": 15.0,
+      "Price": 130.0,
       "OrderNumber": "ORD-003"
     }
   ],
   "RetailLocations": [
     {
-      "Id": 1,
-      "Name": "Магазин 1",
-      "Type": "Магазин",
-      "Area": 150.0,
-      "NumberOfHalls": 1,
-      "NumberOfCounters": 5,
-      "Rent": 3000.0,
-      "Utilities": 1000.0,
       "Inventory": [
         {
           "ProductId": 1,
@@ -86,23 +91,42 @@
           "ProductId": 2,
           "Volume": 20
         }
-      ]
+      ],
+      "Id": 1,
+      "Name": "Магазин 1",
+      "Type": "Магазин",
+      "Area": 150.0,
+      "NumberOfHalls": 1,
+      "NumberOfCounters": 5,
+      "Rent": 15000.0,
+      "Utilities": 3000.0
     },
     {
+      "Inventory": [
+        {
+          "ProductId": 3,
+          "Volume": 30
+        }
+      ],
       "Id": 2,
       "Name": "Универмаг 1",
       "Type": "Универмаг",
       "Area": 500.0,
       "NumberOfHalls": 3,
       "NumberOfCounters": 15,
-      "Rent": 8000.0,
-      "Utilities": 2500.0,
-      "Inventory": [
-        {
-          "ProductId": 3,
-          "Volume": 30
-        }
-      ]
+      "Rent": 30000.0,
+      "Utilities": 5000.0
+    },
+    {
+      "Inventory": [],
+      "Id": 3,
+      "Name": "Магазин 2",
+      "Type": "Магазин",
+      "Area": 280.0,
+      "NumberOfHalls": 1,
+      "NumberOfCounters": 6,
+      "Rent": 20000.0,
+      "Utilities": 4000.0
     }
   ],
   "Sales": [
@@ -112,9 +136,9 @@
       "RetailLocationId": 1,
       "SellerId": 1,
       "ProductId": 1,
-      "Date": "2023-01-05T00:00:00",
+      "Date": "2025-01-05T05:10:29",
       "Volume": 5,
-      "Price": 12.0
+      "Price": 560.0
     },
     {
       "Id": 2,
@@ -122,9 +146,9 @@
       "RetailLocationId": 1,
       "SellerId": 1,
       "ProductId": 2,
-      "Date": "2023-01-06T00:00:00",
+      "Date": "2025-01-06T05:11:17",
       "Volume": 3,
-      "Price": 22.0
+      "Price": 2200.0
     },
     {
       "Id": 3,
@@ -132,9 +156,19 @@
       "RetailLocationId": 2,
       "SellerId": 2,
       "ProductId": 3,
-      "Date": "2023-01-07T00:00:00",
+      "Date": "2025-01-07T17:32:56",
       "Volume": 2,
-      "Price": 18.0
+      "Price": 180.0
+    },
+    {
+      "Id": 4,
+      "CustomerId": 3,
+      "RetailLocationId": 2,
+      "SellerId": 2,
+      "ProductId": 2,
+      "Date": "2025-01-27T01:23:22",
+      "Volume": 3,
+      "Price": 400.0
     }
   ],
   "Sellers": [
@@ -142,13 +176,19 @@
       "Id": 1,
       "Name": "Продавец 1",
       "RetailLocationId": 1,
-      "Salary": 2000.0
+      "Salary": 20000.0
     },
     {
       "Id": 2,
       "Name": "Продавец 2",
       "RetailLocationId": 2,
-      "Salary": 3000.0
+      "Salary": 30000.0
+    },
+    {
+      "Id": 3,
+      "Name": "Продавец 3",
+      "RetailLocationId": 3,
+      "Salary": 35000.0
     }
   ]
 }

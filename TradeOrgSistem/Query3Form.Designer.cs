@@ -126,6 +126,7 @@
             this.Controls.Add(this.lblTitle);
             this.MaximizeBox = false;
             this.Name = "Query3Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Запрос 3";
             this.Load += new System.EventHandler(this.Query3Form_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvResults)).EndInit();

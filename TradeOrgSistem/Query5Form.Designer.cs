@@ -156,7 +156,8 @@
             this.Controls.Add(this.lblTitle);
             this.MaximizeBox = false;
             this.Name = "Query5Form";
-            this.Text = "Query5Form";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Запрос 5";
             this.Load += new System.EventHandler(this.Query5Form_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
