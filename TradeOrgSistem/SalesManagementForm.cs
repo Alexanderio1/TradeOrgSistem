@@ -22,18 +22,12 @@ namespace TradeOrgSistem
             _service = new SaleManagementService();
         }
 
-        /// <summary>
-        /// Обновляет DataGridView, загружая список продаж.
-        /// </summary>
         private void RefreshSalesGrid()
         {
             dgvSales.DataSource = null;
             dgvSales.DataSource = _service.GetAllSales();
         }
 
-        /// <summary>
-        /// Если поле txtNewSaleId пустое, устанавливает следующий доступный ID.
-        /// </summary>
         private void SetNextSaleId()
         {
             if (string.IsNullOrWhiteSpace(txtNewSaleId.Text))
@@ -56,14 +50,12 @@ namespace TradeOrgSistem
                     return;
                 }
 
-                // Проверяем, что продажи с таким ID не существует
                 if (_service.GetAllSales().Any(s => s.Id == id))
                 {
                     MessageBox.Show("Продажа с таким ID уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Считываем остальные параметры
                 if (!int.TryParse(txtNewCustomerId.Text.Trim(), out int customerId))
                 {
                     MessageBox.Show("Неверный формат Customer ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

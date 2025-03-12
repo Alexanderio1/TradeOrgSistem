@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем обязательный параметр: Product ID
                 int? productId = null;
                 if (!string.IsNullOrWhiteSpace(txtProductId.Text))
                 {
@@ -36,7 +35,6 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Если Product ID не задан, пытаемся использовать Product Name
                 string productName = txtProductName.Text.Trim();
                 if (!productId.HasValue && string.IsNullOrWhiteSpace(productName))
                 {
@@ -44,7 +42,6 @@ namespace TradeOrgSistem
                     return;
                 }
 
-                // Считываем параметры фильтрации для торговой точки
                 int? retailLocationId = null;
                 if (!string.IsNullOrWhiteSpace(txtRetailLocationID.Text))
                 {
@@ -59,11 +56,9 @@ namespace TradeOrgSistem
                 string retailLocationName = txtRetailLocationName.Text.Trim();
                 string retailLocationType = txtRetailLocationType.Text.Trim();
 
-                // Создаем экземпляр сервиса запроса
                 ProductPriceVolumeQueryService service = new ProductPriceVolumeQueryService();
                 var result = service.GetProductPriceVolumeInfo(productId, productName, retailLocationType, retailLocationId, retailLocationName);
 
-                // Отображаем агрегированные результаты в метках
                 lblTotalVolume.Text = $"Общий объем продаж: {result.TotalVolume}";
                 lblMinPrice.Text = $"Минимальная цена: {result.MinPrice:C}";
                 lblMaxPrice.Text = $"Максимальная цена: {result.MaxPrice:C}";
@@ -75,9 +70,6 @@ namespace TradeOrgSistem
             }
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationType на основе типов торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationType()
         {
             var types = DataRepository.Instance.Data.RetailLocations
@@ -93,9 +85,6 @@ namespace TradeOrgSistem
             txtRetailLocationType.AutoCompleteCustomSource = autoCompleteTypes;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtProductName на основе названий товаров.
-        /// </summary>
         private void SetupAutoCompleteForProductName()
         {
             var productNames = DataRepository.Instance.Data.Products
@@ -110,9 +99,6 @@ namespace TradeOrgSistem
             txtProductName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtProductName.AutoCompleteCustomSource = autoCompleteProducts;
         }
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationName на основе названий торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationName()
         {
             var names = DataRepository.Instance.Data.RetailLocations

@@ -23,11 +23,9 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем период
                 DateTime startDate = dtpStartDate.Value;
                 DateTime endDate = dtpEndDate.Value;
 
-                // Считываем опциональные параметры для торговой точки
                 int? retailLocationId = null;
                 if (!string.IsNullOrWhiteSpace(txtRetailLocationID.Text))
                 {
@@ -42,15 +40,12 @@ namespace TradeOrgSistem
                 string retailLocationName = txtRetailLocationName.Text.Trim();
                 string retailLocationType = txtRetailLocationType.Text.Trim();
 
-                // Создаем экземпляр сервиса запроса товарооборота
                 RetailTurnoverQueryService service = new RetailTurnoverQueryService();
                 var result = service.GetRetailTurnover(startDate, endDate, retailLocationId, retailLocationName, retailLocationType);
 
-                // Отображаем общие агрегированные показатели
                 lblTotalRevenue.Text = $"Общая выручка: {result.TotalSalesRevenue:C}";
                 lblTotalVolume.Text = $"Общий объем продаж: {result.TotalSalesVolume}";
 
-                // Отображаем подробную разбивку по торговым точкам в DataGridView
                 dgvBreakdown.DataSource = result.Breakdown;
             }
             catch (Exception ex)
@@ -66,9 +61,6 @@ namespace TradeOrgSistem
             SetupAutoCompleteForRetailLocationType();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для txtRetailLocationName на основе уникальных названий торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationName()
         {
             var names = DataRepository.Instance.Data.RetailLocations
@@ -84,9 +76,6 @@ namespace TradeOrgSistem
             txtRetailLocationName.AutoCompleteCustomSource = acNames;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для txtRetailLocationType на основе уникальных типов торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationType()
         {
             var types = DataRepository.Instance.Data.RetailLocations

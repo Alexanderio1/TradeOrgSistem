@@ -22,21 +22,14 @@ namespace TradeOrgSistem
             _service = new ProductManagementService();
         }
 
-        /// <summary>
-        /// Обновляет DataGridView, загружая все товары из репозитория.
-        /// </summary>
         private void RefreshProductGrid()
         {
             dgvProducts.DataSource = null;
             dgvProducts.DataSource = _service.GetAllProducts();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для полей txtNewProductName и txtNewProductType.
-        /// </summary>
         private void SetupAutoComplete()
         {
-            // Автодополнение для названий товаров
             var productNames = _service.GetAllProducts().Select(p => p.Name).Distinct().ToArray();
             AutoCompleteStringCollection acNames = new AutoCompleteStringCollection();
             acNames.AddRange(productNames);
@@ -45,7 +38,6 @@ namespace TradeOrgSistem
             txtNewProductName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtNewProductName.AutoCompleteCustomSource = acNames;
 
-            // Автодополнение для типов товаров
             var productTypes = _service.GetAllProducts().Select(p => p.Type).Distinct().ToArray();
             AutoCompleteStringCollection acTypes = new AutoCompleteStringCollection();
             acTypes.AddRange(productTypes);
@@ -60,7 +52,6 @@ namespace TradeOrgSistem
             try
             {
                 int id;
-                // Если пользователь ввёл ID, пытаемся его разобрать, иначе подставляем следующий доступный
                 if (string.IsNullOrWhiteSpace(txtNewProductId.Text))
                 {
                     id = _service.GetNextProductId();
@@ -74,7 +65,6 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Проверяем, что товар с таким ID ещё не существует
                 if (_service.GetAllProducts().Any(p => p.Id == id))
                 {
                     MessageBox.Show("Товар с таким ID уже существует. Пожалуйста, выберите другой ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -100,7 +90,6 @@ namespace TradeOrgSistem
                 _service.AddProduct(newProduct);
                 MessageBox.Show("Товар успешно добавлен.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshProductGrid();
-                // Обновляем поле ID для следующего товара, если пользователь не изменял его вручную
                 if (string.IsNullOrWhiteSpace(txtNewProductId.Text))
                     SetNextProductId();
             }
@@ -110,12 +99,8 @@ namespace TradeOrgSistem
             }
         }
 
-        /// <summary>
-        /// Определяет следующий доступный ID и устанавливает его в txtNewProductId.
-        /// </summary>
         private void SetNextProductId()
         {
-            // Если пользователь ввёл ID вручную, не изменяем его
             if (string.IsNullOrWhiteSpace(txtNewProductId.Text))
             {
                 int nextId = _service.GetNextProductId();

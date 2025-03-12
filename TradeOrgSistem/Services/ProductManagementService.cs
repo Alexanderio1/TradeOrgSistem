@@ -20,10 +20,7 @@ namespace TradeOrgSistem.Services
             return _repository.Data.Products;
         }
 
-        /// <summary>
-        /// Возвращает следующий доступный ID для нового товара.
-        /// Если список пуст, возвращает 1.
-        /// </summary>
+
         public int GetNextProductId()
         {
             if (_repository.Data.Products == null || !_repository.Data.Products.Any())
@@ -37,7 +34,6 @@ namespace TradeOrgSistem.Services
                 throw new InvalidOperationException("Товар с таким ID уже существует.");
             _repository.Data.Products.Add(newProduct);
 
-            // Сохраняем изменения в файл
             _repository.SaveData();
         }
 
@@ -49,7 +45,6 @@ namespace TradeOrgSistem.Services
             product.Name = updatedProduct.Name;
             product.Type = updatedProduct.Type;
 
-            // Сохраняем изменения в файл
             _repository.SaveData();
         }
 
@@ -60,7 +55,6 @@ namespace TradeOrgSistem.Services
                 throw new InvalidOperationException("Товар не найден.");
             _repository.Data.Products.Remove(product);
 
-            // Сохраняем изменения в файл
             _repository.SaveData();
         }
     }

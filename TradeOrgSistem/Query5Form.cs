@@ -23,18 +23,14 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем период
                 DateTime startDate = dtpStartDate.Value;
                 DateTime endDate = dtpEndDate.Value;
 
-                // Считываем тип торговой точки (опционально)
                 string retailLocationType = txtRetailLocationType.Text.Trim();
 
-                // Создаем экземпляр сервиса для вычисления средней выработки продавца
                 AverageSellerPerformanceQueryService service = new AverageSellerPerformanceQueryService();
                 var result = service.GetAverageSellerPerformance(startDate, endDate, retailLocationType);
 
-                // Отображаем результаты
                 lblAverageSalesVolume.Text = $"Средний объем продаж на одного продавца: {result.AverageSalesVolume}";
                 lblAverageRevenue.Text = $"Средняя выручка на одного продавца: {result.AverageRevenue:C}";
             }
@@ -49,9 +45,6 @@ namespace TradeOrgSistem
         {
             SetupAutoCompleteForRetailLocationType();
         }
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationType, используя уникальные типы торговых точек из репозитория.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationType()
         {
             var types = DataRepository.Instance.Data.RetailLocations
@@ -61,7 +54,6 @@ namespace TradeOrgSistem
             AutoCompleteStringCollection autoCompleteTypes = new AutoCompleteStringCollection();
             autoCompleteTypes.AddRange(types);
 
-            // Убедитесь, что поле однострочное
             txtRetailLocationType.Multiline = false;
             txtRetailLocationType.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtRetailLocationType.AutoCompleteSource = AutoCompleteSource.CustomSource;

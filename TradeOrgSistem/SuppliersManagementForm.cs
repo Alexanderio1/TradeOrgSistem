@@ -40,7 +40,6 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Проверяем, не занят ли уже этот ID
                 if (_service.GetAllSuppliers().Any(s => s.Id == id))
                 {
                     MessageBox.Show("Поставщик с таким ID уже существует. Выберите другой ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -63,7 +62,6 @@ namespace TradeOrgSistem
                 _service.AddSupplier(newSupplier);
                 MessageBox.Show("Поставщик успешно добавлен.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshSupplierGrid();
-                // После добавления – сбрасываем поля, назначаем следующий ID
                 txtNewSupplierId.Clear();
                 txtNewSupplierName.Clear();
                 SetNextSupplierId();
@@ -85,7 +83,6 @@ namespace TradeOrgSistem
                 }
                 Supplier selectedSupplier = (Supplier)dgvSuppliers.SelectedRows[0].DataBoundItem;
 
-                // Считываем новое имя из поля txtEditSupplierName
                 string newName = txtEditSupplierName.Text.Trim();
                 if (string.IsNullOrWhiteSpace(newName))
                 {
@@ -137,18 +134,12 @@ namespace TradeOrgSistem
             SetNextSupplierId();
         }
 
-        /// <summary>
-        /// Загружает список поставщиков в DataGridView.
-        /// </summary>
         private void RefreshSupplierGrid()
         {
             dgvSuppliers.DataSource = null;
             dgvSuppliers.DataSource = _service.GetAllSuppliers();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для txtNewSupplierName на основе уже существующих имён поставщиков.
-        /// </summary>
         private void SetupAutoComplete()
         {
             var supplierNames = _service.GetAllSuppliers().Select(s => s.Name).Distinct().ToArray();
@@ -161,9 +152,6 @@ namespace TradeOrgSistem
             txtNewSupplierName.AutoCompleteCustomSource = acNames;
         }
 
-        /// <summary>
-        /// Если поле для ID нового поставщика пустое, назначаем следующий доступный ID.
-        /// </summary>
         private void SetNextSupplierId()
         {
             if (string.IsNullOrWhiteSpace(txtNewSupplierId.Text))

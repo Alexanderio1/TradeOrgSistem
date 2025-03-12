@@ -40,7 +40,6 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Проверяем, что торговая точка с таким ID ещё не существует
                 if (_service.GetAllRetailLocations().Any(l => l.Id == id))
                 {
                     MessageBox.Show("Торговая точка с таким ID уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -55,7 +54,6 @@ namespace TradeOrgSistem
                     return;
                 }
 
-                // Читаем числовые параметры (с проверкой)
                 if (!decimal.TryParse(txtNewLocationArea.Text.Trim(), out decimal area))
                 {
                     MessageBox.Show("Неверный формат торговой площади.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -124,7 +122,6 @@ namespace TradeOrgSistem
                 }
                 RetailLocation selectedLocation = (RetailLocation)dgvLocations.SelectedRows[0].DataBoundItem;
 
-                // Считываем новые значения
                 string newName = txtEditLocationName.Text.Trim();
                 string newType = txtEditLocationType.Text.Trim();
                 if (string.IsNullOrWhiteSpace(newName) || string.IsNullOrWhiteSpace(newType))
@@ -210,18 +207,11 @@ namespace TradeOrgSistem
             SetNextLocationId();
         }
 
-        /// <summary>
-        /// Обновляет DataGridView, загружая список торговых точек.
-        /// </summary>
         private void RefreshLocationsGrid()
         {
             dgvLocations.DataSource = null;
             dgvLocations.DataSource = _service.GetAllRetailLocations();
         }
-
-        /// <summary>
-        /// Настраивает автодополнение для полей txtNewLocationName и txtNewLocationType.
-        /// </summary>
         private void SetupAutoComplete()
         {
             var locationNames = _service.GetAllRetailLocations().Select(l => l.Name).Distinct().ToArray();
@@ -241,9 +231,6 @@ namespace TradeOrgSistem
             txtNewLocationType.AutoCompleteCustomSource = acTypes;
         }
 
-        /// <summary>
-        /// Если поле txtNewLocationId пустое, устанавливает следующий доступный ID.
-        /// </summary>
         private void SetNextLocationId()
         {
             if (string.IsNullOrWhiteSpace(txtNewLocationId.Text))

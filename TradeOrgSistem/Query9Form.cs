@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // 1. Считываем поставщика:
                 int? supplierId = null;
                 if (!string.IsNullOrWhiteSpace(txtSupplierID.Text))
                 {
@@ -37,7 +36,6 @@ namespace TradeOrgSistem
                 }
                 string supplierName = txtSupplierName.Text.Trim();
 
-                // 2. Считываем товар:
                 int? productId = null;
                 if (!string.IsNullOrWhiteSpace(txtProductID.Text))
                 {
@@ -51,18 +49,15 @@ namespace TradeOrgSistem
                 }
                 string productName = txtProductName.Text.Trim();
 
-                // Если ни ID, ни имя товара не заданы, выдаем ошибку.
                 if (!productId.HasValue && string.IsNullOrWhiteSpace(productName))
                 {
                     MessageBox.Show("Необходимо указать либо Product ID, либо Product Name.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // 3. Считываем период
                 DateTime? startDate = dtpStartDate.Value;
                 DateTime? endDate = dtpEndDate.Value;
 
-                // 4. Вызываем сервис запроса поставок
                 DeliveryQueryService service = new DeliveryQueryService();
                 var result = service.GetDeliveriesForSupplierAndProduct(
                     supplierId, supplierName,
@@ -70,10 +65,8 @@ namespace TradeOrgSistem
                     startDate, endDate
                 );
 
-                // 5. Привязываем результат к DataGridView
                 dgvResults.DataSource = result.Deliveries;
 
-                // 6. Отображаем общее число поставок
                 lblTotalCount.Text = $"Общее число поставок: {result.TotalCount}";
             }
             catch (Exception ex)
@@ -82,9 +75,6 @@ namespace TradeOrgSistem
                                 "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        /// <summary>
-        /// Настраивает автодополнение для поля txtSupplierName на основе уникальных имен поставщиков.
-        /// </summary>
         private void SetupAutoCompleteForSupplierName()
         {
             var supplierNames = DataRepository.Instance.Data.Suppliers
@@ -100,9 +90,6 @@ namespace TradeOrgSistem
             txtSupplierName.AutoCompleteCustomSource = acSuppliers;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtProductName на основе уникальных названий товаров.
-        /// </summary>
         private void SetupAutoCompleteForProductName()
         {
             var productNames = DataRepository.Instance.Data.Products

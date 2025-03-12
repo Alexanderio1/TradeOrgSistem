@@ -7,7 +7,6 @@ using TradeOrgSistem.Models;
 
 namespace TradeOrgSistem.Services
 {
-    //результат запроса на перечень поставщиков и их общее число
     public class SupplierQueryResult
     {
         public List<Supplier> Suppliers { get; set; }

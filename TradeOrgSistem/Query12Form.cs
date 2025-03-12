@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем номер заказа (обязательный параметр)
                 string orderNumber = txtOrderNumber.Text.Trim();
                 if (string.IsNullOrWhiteSpace(orderNumber))
                 {
@@ -31,14 +30,11 @@ namespace TradeOrgSistem
                     return;
                 }
 
-                // Создаем экземпляр сервиса запроса поставок по номеру заказа
                 DeliveryOrderQueryService service = new DeliveryOrderQueryService();
                 var result = service.GetDeliveriesByOrderNumber(orderNumber);
 
-                // Привязываем список поставок к DataGridView
                 dgvResults.DataSource = result.Deliveries;
 
-                // Отображаем общее число найденных поставок
                 lblTotalCount.Text = $"Общее число поставок: {result.TotalCount}";
             }
             catch (Exception ex)
@@ -48,9 +44,6 @@ namespace TradeOrgSistem
             }
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtOrderNumber на основе уникальных номеров заказов из поставок.
-        /// </summary>
         private void SetupAutoCompleteForOrderNumber()
         {
             var orderNumbers = DataRepository.Instance.Data.Deliveries

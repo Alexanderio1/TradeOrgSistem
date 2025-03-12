@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем опциональный параметр Retail Location ID
                 int? retailLocationId = null;
                 if (!string.IsNullOrWhiteSpace(txtRetailLocationID.Text))
                 {
@@ -36,19 +35,15 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Считываем название и тип торговой точки
                 string retailLocationName = txtRetailLocationName.Text.Trim();
                 string retailLocationType = txtRetailLocationType.Text.Trim();
 
-                // Считываем период
                 DateTime startDate = dtpStartDate.Value;
                 DateTime endDate = dtpEndDate.Value;
 
-                // Создаем экземпляр сервиса для получения рентабельности торговой точки
                 RetailLocationProfitabilityQueryService service = new RetailLocationProfitabilityQueryService();
                 var result = service.GetProfitability(retailLocationId, retailLocationName, retailLocationType, startDate, endDate);
 
-                // Отображаем результаты в метках
                 lblRetailLocation.Text = $"Торговая точка: {result.RetailLocationName} (ID: {result.RetailLocationId})";
                 lblTotalSalesRevenue.Text = $"Общая выручка: {result.TotalSalesRevenue:C}";
                 lblOverheadCosts.Text = $"Накладные расходы: {result.OverheadCosts:C}";
@@ -61,9 +56,6 @@ namespace TradeOrgSistem
             }
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationName на основе уникальных названий торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationName()
         {
             var names = DataRepository.Instance.Data.RetailLocations
@@ -79,9 +71,6 @@ namespace TradeOrgSistem
             txtRetailLocationName.AutoCompleteCustomSource = acNames;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationType на основе уникальных типов торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationType()
         {
             var types = DataRepository.Instance.Data.RetailLocations

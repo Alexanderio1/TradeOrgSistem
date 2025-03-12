@@ -5,53 +5,21 @@ using TradeOrgSistem.Models;
 
 namespace TradeOrgSistem.Services
 {
-    /// <summary>
-    /// Сервис для получения нормализованной выработки продавца в торговой точке за указанный период.
-    /// Нормализация производится по торговой площади, числу торговых залов или числу прилавков.
-    /// Продавца и торговую точку можно задавать либо по ID, либо по имени (без учёта регистра).
-    /// </summary>
     public class SellerNormalizedPerformanceQueryService
     {
         private readonly DataRepository _repository;
 
         public SellerNormalizedPerformanceQueryService()
         {
-            // Используем Singleton-экземпляр для доступа к данным
             _repository = DataRepository.Instance;
         }
 
-        /// <summary>
-        /// Получает нормализованную выработку для конкретного продавца в конкретной торговой точке за заданный период.
-        /// Если sellerId не задан, производится поиск по sellerName. Аналогично для торговой точки.
-        /// Нормализация производится по выбранному параметру (Area, Halls или Counters).
-        /// </summary>
-        /// <param name="sellerId">
-        /// ID продавца (если известен). Если не задан, используется sellerName.
-        /// </param>
-        /// <param name="sellerName">
-        /// Имя продавца (используется, если sellerId не задан). Поиск без учёта регистра.
-        /// </param>
-        /// <param name="retailLocationId">
-        /// ID торговой точки (если известен). Если не задан, используется retailLocationName.
-        /// </param>
-        /// <param name="retailLocationName">
-        /// Название торговой точки (используется, если retailLocationId не задан). Поиск без учёта регистра.
-        /// </param>
-        /// <param name="startDate">Начало анализируемого периода.</param>
-        /// <param name="endDate">Конец анализируемого периода.</param>
-        /// <param name="normalizationFactor">
-        /// Тип нормализации: Area, Halls или Counters.
-        /// </param>
-        /// <returns>
-        /// Объект SellerNormalizedPerformanceQueryResult с агрегированными данными.
-        /// </returns>
         public SellerNormalizedPerformanceQueryResult GetNormalizedPerformance(
             int? sellerId, string sellerName,
             int? retailLocationId, string retailLocationName,
             DateTime startDate, DateTime endDate,
             NormalizationFactor normalizationFactor)
         {
-            // Определяем продавца:
             if (!sellerId.HasValue)
             {
                 if (string.IsNullOrWhiteSpace(sellerName))
@@ -67,7 +35,6 @@ namespace TradeOrgSistem.Services
             if (seller == null)
                 throw new InvalidOperationException("Продавец не найден.");
 
-            // Определяем торговую точку:
             IRetailLocation retailLocation = null;
             if (retailLocationId.HasValue)
             {
@@ -81,7 +48,6 @@ namespace TradeOrgSistem.Services
             if (retailLocation == null)
                 throw new InvalidOperationException("Торговая точка не найдена.");
 
-            // Фильтруем продажи по продавцу, торговой точке и заданному периоду
             var sales = _repository.Data.Sales.Where(s =>
                 s.SellerId == seller.Id &&
                 s.RetailLocationId == retailLocation.Id &&
@@ -90,8 +56,6 @@ namespace TradeOrgSistem.Services
 
             int totalSalesVolume = sales.Sum(s => s.Volume);
 
-            // Получаем значение нормализации из торговой точки в зависимости от выбранного параметра.
-            // Предполагается, что RetailLocation содержит свойства: Area (decimal), NumberOfHalls (int) и NumberOfCounters (int).
             decimal normalizationValue = 0;
             switch (normalizationFactor)
             {

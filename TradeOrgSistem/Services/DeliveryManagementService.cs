@@ -40,7 +40,6 @@ namespace TradeOrgSistem.Services
             var delivery = _repository.Data.Deliveries.FirstOrDefault(d => d.Id == updatedDelivery.Id);
             if (delivery == null)
                 throw new InvalidOperationException("Поставка не найдена.");
-            // Обновляем все поля
             delivery.SupplierId = updatedDelivery.SupplierId;
             delivery.ProductId = updatedDelivery.ProductId;
             delivery.Date = updatedDelivery.Date;

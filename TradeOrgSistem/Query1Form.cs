@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем параметр Product ID (опционально)
                 int? productId = null;
                 if (!string.IsNullOrWhiteSpace(txtProductID.Text))
                 {
@@ -36,11 +35,9 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Считываем параметры Product Name и Product Type (опционально)
                 string productName = txtProductName.Text.Trim();
                 string productType = txtProductType.Text.Trim();
 
-                // Считываем Min Volume (опционально)
                 int? minVolume = null;
                 if (!string.IsNullOrWhiteSpace(txtMinVolume.Text))
                 {
@@ -53,17 +50,13 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Считываем даты (при условии, что DateTimePicker всегда содержит значение)
                 DateTime? startDate = dtpStartDate.Value;
                 DateTime? endDate = dtpEndDate.Value;
 
-                // Создаем экземпляр сервиса запроса
                 SupplierQueryService service = new SupplierQueryService();
 
-                // Вызываем метод запроса с полученными параметрами
                 var result = service.GetSuppliersByProductCriteria(productType, productId, productName, minVolume, startDate, endDate);
 
-                // Привязываем список поставщиков к DataGridView для отображения результатов.
                 dgvResults.DataSource = result.Suppliers;
 
                 if (dgvResults.Columns["ProductIds"] != null)
@@ -85,12 +78,8 @@ namespace TradeOrgSistem
             SetupAutoCompleteForProductType();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtProductName, используя список названий товаров.
-        /// </summary>
         private void SetupAutoCompleteForProductName()
         {
-            // Извлекаем все уникальные названия товаров из репозитория
             var productNames = DataRepository.Instance.Data.Products
                                 .Select(p => p.Name)
                                 .Distinct()
@@ -99,19 +88,14 @@ namespace TradeOrgSistem
             AutoCompleteStringCollection autoCompleteNames = new AutoCompleteStringCollection();
             autoCompleteNames.AddRange(productNames);
 
-            // Обеспечиваем, что TextBox однострочный
             txtProductName.Multiline = false;
             txtProductName.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
             txtProductName.AutoCompleteSource = AutoCompleteSource.CustomSource;
             txtProductName.AutoCompleteCustomSource = autoCompleteNames;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtProductType, используя список типов товаров.
-        /// </summary>
         private void SetupAutoCompleteForProductType()
         {
-            // Извлекаем все уникальные типы товаров из репозитория
             var productTypes = DataRepository.Instance.Data.Products
                                 .Select(p => p.Type)
                                 .Distinct()

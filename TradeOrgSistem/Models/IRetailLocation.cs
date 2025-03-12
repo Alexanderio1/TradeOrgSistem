@@ -7,7 +7,6 @@ namespace TradeOrgSistem.Models
         int Id { get; set; }
         string Name { get; set; }
         string Type { get; set; }
-        // Изменяем тип с IReadOnlyList на List и добавляем setter
         List<InventoryItem> Inventory { get; set; }
         void AddInventoryItem(InventoryItem item);
         void RemoveInventoryItem(int productId);

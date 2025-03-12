@@ -17,13 +17,11 @@ namespace TradeOrgSistem.Models
         private decimal _rent;
         private decimal _utilities;
 
-        // Теперь Inventory – публичное свойство с get; set; 
-        // и Newtonsoft.Json сможет заполнить его при десериализации.
+
         public List<InventoryItem> Inventory { get; set; }
 
         public RetailLocation()
         {
-            // Инициализируем Inventory пустым списком по умолчанию.
             Inventory = new List<InventoryItem>();
         }
 
@@ -60,7 +58,6 @@ namespace TradeOrgSistem.Models
             }
         }
 
-        // Методы для управления списком Inventory
 
         public void AddInventoryItem(InventoryItem item)
         {

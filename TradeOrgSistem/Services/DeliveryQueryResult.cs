@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace TradeOrgSistem.Services
 {
-    //детали поставки
     public class DeliveryRecord
     {
         public int DeliveryId { get; set; }

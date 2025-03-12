@@ -50,6 +50,7 @@
             this.Controls.Add(this.rtbUserGuide);
             this.MaximizeBox = false;
             this.Name = "UserGuideForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Руководство пользователя";
             this.ResumeLayout(false);
 

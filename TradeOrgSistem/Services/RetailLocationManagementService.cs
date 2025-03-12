@@ -15,18 +15,11 @@ namespace TradeOrgSistem.Services
             _repository = DataRepository.Instance;
         }
 
-        /// <summary>
-        /// Возвращает список всех торговых точек.
-        /// </summary>
         public List<RetailLocation> GetAllRetailLocations()
         {
             return _repository.Data.RetailLocations;
         }
 
-        /// <summary>
-        /// Возвращает следующий доступный ID для новой торговой точки.
-        /// Если список пуст, возвращает 1.
-        /// </summary>
         public int GetNextRetailLocationId()
         {
             if (_repository.Data.RetailLocations == null || !_repository.Data.RetailLocations.Any())
@@ -34,9 +27,6 @@ namespace TradeOrgSistem.Services
             return _repository.Data.RetailLocations.Max(r => r.Id) + 1;
         }
 
-        /// <summary>
-        /// Добавляет новую торговую точку.
-        /// </summary>
         public void AddRetailLocation(RetailLocation newLocation)
         {
             if (_repository.Data.RetailLocations.Any(r => r.Id == newLocation.Id))
@@ -45,9 +35,6 @@ namespace TradeOrgSistem.Services
             _repository.SaveData();
         }
 
-        /// <summary>
-        /// Обновляет данные торговой точки.
-        /// </summary>
         public void UpdateRetailLocation(RetailLocation updatedLocation)
         {
             var location = _repository.Data.RetailLocations.FirstOrDefault(r => r.Id == updatedLocation.Id);
@@ -63,9 +50,6 @@ namespace TradeOrgSistem.Services
             _repository.SaveData();
         }
 
-        /// <summary>
-        /// Удаляет торговую точку по ID.
-        /// </summary>
         public void DeleteRetailLocation(int locationId)
         {
             var location = _repository.Data.RetailLocations.FirstOrDefault(r => r.Id == locationId);

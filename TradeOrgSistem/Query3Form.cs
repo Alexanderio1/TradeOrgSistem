@@ -22,7 +22,6 @@ namespace TradeOrgSistem
 
         private void SetupAutoCompleteForRetailLocationName()
         {
-            // Получаем список названий торговых точек из репозитория
             var names = DataRepository.Instance.Data.RetailLocations.Select(r => r.Name).ToArray();
 
             AutoCompleteStringCollection autoCompleteCollection = new AutoCompleteStringCollection();
@@ -38,7 +37,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем параметр Retail Location ID (опционально)
                 int? retailLocationId = null;
                 if (!string.IsNullOrWhiteSpace(txtRetailLocationID.Text))
                 {
@@ -51,15 +49,12 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Считываем параметр Retail Location Name (опционально)
                 string retailLocationName = txtRetailLocationName.Text.Trim();
 
-                // Создаем экземпляр сервиса для запроса инвентаря торговой точки
                 RetailLocationQueryService service = new RetailLocationQueryService();
                 var result = service.GetInventoryForRetailLocation(retailLocationId, retailLocationName);
 
 
-                // Привязываем список элементов инвентаря к DataGridView для отображения
                 dgvResults.DataSource = result.InventoryItems;
             }
             catch (Exception ex)

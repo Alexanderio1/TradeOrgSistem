@@ -7,9 +7,6 @@ using TradeOrgSistem.Models;
 
 namespace TradeOrgSistem.Services
 {
-    /// <summary>
-    /// Результат запроса покупателей: перечень покупателей и их общее число.
-    /// </summary>
     public class CustomerQueryResult
     {
         public List<Customer> Customers { get; set; }

@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем опциональный параметр Retail Location ID
                 int? retailLocationId = null;
                 if (!string.IsNullOrWhiteSpace(txtRetailLocationID.Text))
                 {
@@ -36,18 +35,14 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Считываем название и тип торговой точки
                 string retailLocationName = txtRetailLocationName.Text.Trim();
                 string retailLocationType = txtRetailLocationType.Text.Trim();
 
-                // Создаем экземпляр сервиса запроса зарплат продавцов
                 SellerSalaryQueryService service = new SellerSalaryQueryService();
                 var result = service.GetSellerSalaryData(retailLocationType, retailLocationId, retailLocationName);
 
-                // Привязываем список записей к DataGridView
                 dgvResults.DataSource = result.SellerSalaries;
 
-                // Выводим общее число найденных продавцов
                 lblTotalCount.Text = $"Общее число продавцов: {result.TotalCount}";
             }
             catch (Exception ex)
@@ -56,9 +51,6 @@ namespace TradeOrgSistem
                                 "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationName на основе уникальных названий торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationName()
         {
             var names = DataRepository.Instance.Data.RetailLocations
@@ -74,9 +66,6 @@ namespace TradeOrgSistem
             txtRetailLocationName.AutoCompleteCustomSource = acNames;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationType на основе уникальных типов торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationType()
         {
             var types = DataRepository.Instance.Data.RetailLocations

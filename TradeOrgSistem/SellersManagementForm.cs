@@ -162,18 +162,12 @@ namespace TradeOrgSistem
             SetNextSellerId();
         }
 
-        /// <summary>
-        /// Обновляет DataGridView, загружая список продавцов.
-        /// </summary>
         private void RefreshSellerGrid()
         {
             dgvSellers.DataSource = null;
             dgvSellers.DataSource = _service.GetAllSellers();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtNewSellerName на основе уникальных имен продавцов.
-        /// </summary>
         private void SetupAutoCompleteForSellerName()
         {
             var sellerNames = _service.GetAllSellers().Select(s => s.Name).Distinct().ToArray();
@@ -185,9 +179,6 @@ namespace TradeOrgSistem
             txtNewSellerName.AutoCompleteCustomSource = acNames;
         }
 
-        /// <summary>
-        /// Если поле для нового продавца ID пустое, устанавливает следующий доступный ID.
-        /// </summary>
         private void SetNextSellerId()
         {
             if (string.IsNullOrWhiteSpace(txtNewSellerId.Text))

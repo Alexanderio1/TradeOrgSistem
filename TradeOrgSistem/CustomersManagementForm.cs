@@ -22,18 +22,12 @@ namespace TradeOrgSistem
             _service = new CustomerManagementService();
         }
 
-        /// <summary>
-        /// Обновляет DataGridView, загружая список покупателей.
-        /// </summary>
         private void RefreshCustomerGrid()
         {
             dgvCustomers.DataSource = null;
             dgvCustomers.DataSource = _service.GetAllCustomers();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для txtNewCustomerName на основе уже существующих имен покупателей.
-        /// </summary>
         private void SetupAutoCompleteForCustomerName()
         {
             var customerNames = _service.GetAllCustomers().Select(c => c.Name).Distinct().ToArray();
@@ -45,9 +39,6 @@ namespace TradeOrgSistem
             txtNewCustomerName.AutoCompleteCustomSource = acNames;
         }
 
-        /// <summary>
-        /// Если поле txtNewCustomerId пустое, автоматически подставляет следующий доступный ID.
-        /// </summary>
         private void SetNextCustomerId()
         {
             if (string.IsNullOrWhiteSpace(txtNewCustomerId.Text))
@@ -75,7 +66,6 @@ namespace TradeOrgSistem
                     }
                 }
 
-                // Проверяем, что покупатель с таким ID не существует
                 if (_service.GetAllCustomers().Any(c => c.Id == id))
                 {
                     MessageBox.Show("Покупатель с таким ID уже существует.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

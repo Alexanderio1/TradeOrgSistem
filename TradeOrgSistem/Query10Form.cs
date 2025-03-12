@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем параметры продавца
                 int? sellerId = null;
                 if (!string.IsNullOrWhiteSpace(txtSellerId.Text))
                 {
@@ -37,7 +36,6 @@ namespace TradeOrgSistem
                 }
                 string sellerName = txtSellerName.Text.Trim();
 
-                // Считываем параметры торговой точки
                 int? retailLocationId = null;
                 if (!string.IsNullOrWhiteSpace(txtRetailLocationId.Text))
                 {
@@ -51,11 +49,9 @@ namespace TradeOrgSistem
                 }
                 string retailLocationName = txtRetailLocationName.Text.Trim();
 
-                // Считываем период
                 DateTime startDate = dtpStartDate.Value;
                 DateTime endDate = dtpEndDate.Value;
 
-                // Считываем тип нормализации из ComboBox
                 if (cmbNormalizationFactor.SelectedItem == null)
                 {
                     MessageBox.Show("Выберите тип нормализации.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -68,7 +64,6 @@ namespace TradeOrgSistem
                     return;
                 }
 
-                // Создаем экземпляр сервиса запроса нормализованной выработки продавца
                 SellerNormalizedPerformanceQueryService service = new SellerNormalizedPerformanceQueryService();
                 var result = service.GetNormalizedPerformance(
                     sellerId, sellerName,
@@ -77,7 +72,6 @@ namespace TradeOrgSistem
                     normalizationFactor
                 );
 
-                // Отображаем результаты в метках
                 lblResultSeller.Text = $"Продавец: {result.SellerName} (ID: {result.SellerId})";
                 lblResultRetailLocation.Text = $"Торговая точка: {result.RetailLocationName} (ID: {result.RetailLocationId})";
                 lblResultRetailLocation.Text = $"Общий объем продаж: {result.TotalSalesVolume}";
@@ -98,9 +92,6 @@ namespace TradeOrgSistem
             SetupNormalizationFactorCombo();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtSellerName на основе имен продавцов из репозитория.
-        /// </summary>
         private void SetupAutoCompleteForSellerName()
         {
             var sellerNames = DataRepository.Instance.Data.Sellers
@@ -116,9 +107,6 @@ namespace TradeOrgSistem
             txtSellerName.AutoCompleteCustomSource = acSellerNames;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationName на основе названий торговых точек из репозитория.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationName()
         {
             var locationNames = DataRepository.Instance.Data.RetailLocations
@@ -134,9 +122,6 @@ namespace TradeOrgSistem
             txtRetailLocationName.AutoCompleteCustomSource = acLocationNames;
         }
 
-        /// <summary>
-        /// Заполняет ComboBox cmbNormalizationFactor значениями перечисления NormalizationFactor.
-        /// </summary>
         private void SetupNormalizationFactorCombo()
         {
             cmbNormalizationFactor.Items.Clear();
@@ -144,7 +129,6 @@ namespace TradeOrgSistem
             {
                 cmbNormalizationFactor.Items.Add(factor);
             }
-            // Выбираем значение по умолчанию (например, Area)
             cmbNormalizationFactor.SelectedIndex = 0;
         }
     }

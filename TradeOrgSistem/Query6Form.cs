@@ -23,7 +23,6 @@ namespace TradeOrgSistem
         {
             try
             {
-                // Считываем продавца
                 int? sellerId = null;
                 if (!string.IsNullOrWhiteSpace(txtSellerId.Text))
                 {
@@ -37,7 +36,6 @@ namespace TradeOrgSistem
                 }
                 string sellerName = txtSellerName.Text.Trim();
 
-                // Считываем торговую точку
                 int? retailLocationId = null;
                 if (!string.IsNullOrWhiteSpace(txtRetailLocationId.Text))
                 {
@@ -51,11 +49,9 @@ namespace TradeOrgSistem
                 }
                 string retailLocationName = txtRetailLocationName.Text.Trim();
 
-                // Считываем период
                 DateTime startDate = dtpStartDate.Value;
                 DateTime endDate = dtpEndDate.Value;
 
-                // Создаем экземпляр сервиса для запроса индивидуальной выработки продавца
                 IndividualSellerPerformanceQueryService service = new IndividualSellerPerformanceQueryService();
                 var result = service.GetPerformanceForSellerAtLocation(
                     sellerId,
@@ -66,7 +62,6 @@ namespace TradeOrgSistem
                     endDate
                 );
 
-                // Отображаем результаты в метках
                 lblResultSellerName.Text = $"Продавец: {result.SellerName} (ID: {result.SellerId})";
                 lblResultRetailLocation.Text = $"Торговая точка: {result.RetailLocationName} (ID: {result.RetailLocationId})";
                 lblTotalSalesVolume.Text = $"Общий объем продаж: {result.TotalSalesVolume}";
@@ -78,10 +73,6 @@ namespace TradeOrgSistem
                                 "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-        /// <summary>
-        /// Настраивает автодополнение для поля txtSellerName,
-        /// используя уникальные имена продавцов из репозитория.
-        /// </summary>
         private void SetupAutoCompleteForSellerName()
         {
             var sellerNames = DataRepository.Instance.Data.Sellers
@@ -97,10 +88,6 @@ namespace TradeOrgSistem
             txtSellerName.AutoCompleteCustomSource = autoCompleteSellerNames;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationName,
-        /// используя уникальные названия торговых точек из репозитория.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationName()
         {
             var locationNames = DataRepository.Instance.Data.RetailLocations

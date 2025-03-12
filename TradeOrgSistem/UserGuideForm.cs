@@ -8,7 +8,6 @@ namespace TradeOrgSistem
         public UserGuideForm()
         {
             InitializeComponent();
-            // Заполняем RichTextBox с руководством при загрузке формы
             rtbUserGuide.Text = GetUserGuideText();
         }
 

@@ -8,34 +8,15 @@ using TradeOrgSistem.Repository;
 
 namespace TradeOrgSistem.Services
 {
-    /// <summary>
-    /// Сервис для получения номенклатуры и объёма товаров в указанной торговой точке.
-    /// Позволяет искать торговую точку либо по ID, либо по названию.
-    /// </summary>
     public class RetailLocationQueryService
     {
         private readonly DataRepository _repository;
 
         public RetailLocationQueryService()
         {
-            // Используем Singleton-экземпляр DataRepository для доступа к данным
             _repository = DataRepository.Instance;
         }
 
-        /// <summary>
-        /// Возвращает номенклатуру и объём товаров для торговой точки,
-        /// идентифицируемой либо по ID, либо по названию.
-        /// Если задан retailLocationId, поиск идет по нему, иначе выполняется поиск по retailLocationName.
-        /// </summary>
-        /// <param name="retailLocationId">
-        /// ID торговой точки (при наличии). Если задан, то retailLocationName игнорируется.
-        /// </param>
-        /// <param name="retailLocationName">
-        /// Название торговой точки для поиска (без учета регистра), если ID не задан.
-        /// </param>
-        /// <returns>
-        /// Объект InventoryQueryResult с перечнем товаров и их объемами.
-        /// </returns>
         public InventoryQueryResult GetInventoryForRetailLocation(int? retailLocationId, string retailLocationName)
         {
             RetailLocation location = null;
@@ -53,7 +34,6 @@ namespace TradeOrgSistem.Services
             if (location == null)
                 throw new InvalidOperationException("Торговая точка не найдена. Проверьте введенные данные.");
 
-            // Для каждого элемента инвентаря находим соответствующий товар
             var inventoryItems = location.Inventory.Select(invItem =>
             {
                 var product = _repository.Data.Products.FirstOrDefault(p => p.Id == invItem.ProductId);

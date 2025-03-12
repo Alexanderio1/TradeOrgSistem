@@ -22,18 +22,12 @@ namespace TradeOrgSistem
             _service = new DeliveryManagementService();
         }
 
-        /// <summary>
-        /// Обновляет DataGridView, загружая список поставок.
-        /// </summary>
         private void RefreshDeliveryGrid()
         {
             dgvDeliveries.DataSource = null;
             dgvDeliveries.DataSource = _service.GetAllDeliveries();
         }
 
-        /// <summary>
-        /// Если поле txtNewDeliveryId пустое, устанавливает следующий доступный ID.
-        /// </summary>
         private void SetNextDeliveryId()
         {
             if (string.IsNullOrWhiteSpace(txtNewDeliveryId.Text))
@@ -56,14 +50,12 @@ namespace TradeOrgSistem
                     return;
                 }
 
-                // Проверяем, что поставка с таким ID не существует
                 if (_service.GetAllDeliveries().Any(d => d.Id == id))
                 {
                     MessageBox.Show("Поставка с таким ID уже существует. Выберите другой ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return;
                 }
 
-                // Считываем остальные данные
                 if (!int.TryParse(txtNewSupplierId.Text.Trim(), out int supplierId))
                 {
                     MessageBox.Show("Неверный формат Supplier ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -101,7 +93,6 @@ namespace TradeOrgSistem
                 _service.AddDelivery(newDelivery);
                 MessageBox.Show("Поставка успешно добавлена.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 RefreshDeliveryGrid();
-                // Очищаем поля для добавления
                 txtNewDeliveryId.Clear();
                 txtNewSupplierId.Clear();
                 txtNewProductId.Clear();
@@ -127,7 +118,6 @@ namespace TradeOrgSistem
                 }
                 Delivery selectedDelivery = (Delivery)dgvDeliveries.SelectedRows[0].DataBoundItem;
 
-                // Считываем новые данные из полей редактирования
                 if (!int.TryParse(txtEditSupplierId.Text.Trim(), out int newSupplierId))
                 {
                     MessageBox.Show("Неверный формат Supplier ID.", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);

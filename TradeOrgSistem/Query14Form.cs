@@ -24,11 +24,9 @@ namespace TradeOrgSistem
             {
                 try
                 {
-                    // Считываем период (опционально)
                     DateTime? startDate = dtpStartDate.Value;
                     DateTime? endDate = dtpEndDate.Value;
 
-                    // Считываем параметры для торговой точки
                     int? retailLocationId = null;
                     if (!string.IsNullOrWhiteSpace(txtRetailLocationID.Text))
                     {
@@ -43,14 +41,11 @@ namespace TradeOrgSistem
                     string retailLocationName = txtRetailLocationName.Text.Trim();
                     string retailLocationType = txtRetailLocationType.Text.Trim();
 
-                    // Создаем экземпляр сервиса для запроса активных покупателей
                     ActiveCustomerQueryService service = new ActiveCustomerQueryService();
                     var result = service.GetActiveCustomers(startDate, endDate, retailLocationId, retailLocationName, retailLocationType);
 
-                    // Привязываем полученный список активных покупателей к DataGridView
                     dgvResults.DataSource = result.ActiveCustomers;
 
-                    // Выводим общее число найденных покупателей
                     lblTotalCount.Text = $"Общее число активных покупателей: {result.TotalCount}";
                 }
                 catch (Exception ex)
@@ -67,9 +62,6 @@ namespace TradeOrgSistem
             SetupAutoCompleteForRetailLocationType();
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationName на основе уникальных названий торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationName()
         {
             var locationNames = DataRepository.Instance.Data.RetailLocations
@@ -85,9 +77,6 @@ namespace TradeOrgSistem
             txtRetailLocationName.AutoCompleteCustomSource = acLocationNames;
         }
 
-        /// <summary>
-        /// Настраивает автодополнение для поля txtRetailLocationType на основе уникальных типов торговых точек.
-        /// </summary>
         private void SetupAutoCompleteForRetailLocationType()
         {
             var locationTypes = DataRepository.Instance.Data.RetailLocations

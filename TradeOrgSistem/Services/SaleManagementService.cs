@@ -15,18 +15,11 @@ namespace TradeOrgSistem.Services
             _repository = DataRepository.Instance;
         }
 
-        /// <summary>
-        /// Возвращает список всех продаж.
-        /// </summary>
         public List<Sale> GetAllSales()
         {
             return _repository.Data.Sales;
         }
 
-        /// <summary>
-        /// Возвращает следующий доступный ID для новой продажи.
-        /// Если список пуст, возвращает 1.
-        /// </summary>
         public int GetNextSaleId()
         {
             if (_repository.Data.Sales == null || !_repository.Data.Sales.Any())
@@ -34,9 +27,6 @@ namespace TradeOrgSistem.Services
             return _repository.Data.Sales.Max(s => s.Id) + 1;
         }
 
-        /// <summary>
-        /// Добавляет новую продажу.
-        /// </summary>
         public void AddSale(Sale newSale)
         {
             if (_repository.Data.Sales.Any(s => s.Id == newSale.Id))
@@ -45,9 +35,6 @@ namespace TradeOrgSistem.Services
             _repository.SaveData();
         }
 
-        /// <summary>
-        /// Обновляет данные существующей продажи.
-        /// </summary>
         public void UpdateSale(Sale updatedSale)
         {
             var sale = _repository.Data.Sales.FirstOrDefault(s => s.Id == updatedSale.Id);
@@ -63,9 +50,6 @@ namespace TradeOrgSistem.Services
             _repository.SaveData();
         }
 
-        /// <summary>
-        /// Удаляет продажу по ID.
-        /// </summary>
         public void DeleteSale(int saleId)
         {
             var sale = _repository.Data.Sales.FirstOrDefault(s => s.Id == saleId);
