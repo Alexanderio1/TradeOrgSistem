@@ -2,18 +2,15 @@
   "Suppliers": [
     {
       "Id": 1,
-      "Name": "Поставщик А",
-      "ProductIds": []
+      "Name": "Поставщик А"
     },
     {
       "Id": 2,
-      "Name": "Поставщик Б",
-      "ProductIds": []
+      "Name": "Поставщик Б"
     },
     {
       "Id": 3,
-      "Name": "Поставщик В",
-      "ProductIds": []
+      "Name": "Поставщик В"
     }
   ],
   "Customers": [
@@ -49,6 +46,11 @@
       "Id": 3,
       "Name": "Товар В",
       "Type": "Продукты питания"
+    },
+    {
+      "Id": 4,
+      "Name": "Товар Г",
+      "Type": "Смартфон"
     }
   ],
   "Deliveries": [
@@ -78,6 +80,15 @@
       "Volume": 70,
       "Price": 130.0,
       "OrderNumber": "ORD-003"
+    },
+    {
+      "Id": 4,
+      "SupplierId": 3,
+      "ProductId": 4,
+      "Date": "2025-03-13T12:25:24.2263577+07:00",
+      "Volume": 150,
+      "Price": 500.0,
+      "OrderNumber": "ORD-004"
     }
   ],
   "RetailLocations": [

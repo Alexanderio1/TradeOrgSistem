@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Windows.Forms;
 using TradeOrgSistem.Models;
 using TradeOrgSistem.Repository;
 
@@ -31,6 +32,7 @@ namespace TradeOrgSistem.Services
         {
             if (_repository.Data.Suppliers.Any(s => s.Id == newSupplier.Id))
                 throw new InvalidOperationException("Поставщик с таким ID уже существует.");
+
             _repository.Data.Suppliers.Add(newSupplier);
 
             _repository.SaveData();

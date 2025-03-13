@@ -50,7 +50,7 @@
             this.btnDeleteSupplier.Name = "btnDeleteSupplier";
             this.btnDeleteSupplier.Size = new System.Drawing.Size(478, 66);
             this.btnDeleteSupplier.TabIndex = 45;
-            this.btnDeleteSupplier.Text = "Удалить товар";
+            this.btnDeleteSupplier.Text = "Удалить поставщика";
             this.btnDeleteSupplier.UseVisualStyleBackColor = true;
             this.btnDeleteSupplier.Click += new System.EventHandler(this.btnDeleteSupplier_Click);
             // 
@@ -118,7 +118,7 @@
             this.btnEditSupplier.Name = "btnEditSupplier";
             this.btnEditSupplier.Size = new System.Drawing.Size(478, 66);
             this.btnEditSupplier.TabIndex = 31;
-            this.btnEditSupplier.Text = "Редактировать товар";
+            this.btnEditSupplier.Text = "Редактировать поставщика";
             this.btnEditSupplier.UseVisualStyleBackColor = true;
             this.btnEditSupplier.Click += new System.EventHandler(this.btnEditSupplier_Click);
             // 
